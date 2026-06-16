@@ -2,7 +2,7 @@ function Footer() {
     return `
         <span>All Rights Reserved</span>
         <nav>
-            <a href="/home">Biokinetix</a>
+            <a href="home">BiokinetiX</a>
         </nav>
     `;
 }

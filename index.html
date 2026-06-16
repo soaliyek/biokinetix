@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/biokinetix/">
   <title>BioKinetiX</title>
   <script>
     //window.location.replace('pages/home.html');
@@ -26,28 +27,30 @@
     };
 
     function getRoute() {
-      const path = window.location.pathname.replace(/^\/|\/$/g, '');
-      return routes[path] ? path : 'home';
+      const trimmed = window.location.pathname.replace(/^\/|\/$/g, '');
+      const route = trimmed.split('/').pop();
+      return routes[route] ? route : 'home';
     }
 
     function render() {
       const route = getRoute();
       document.getElementById('header').innerHTML = Header(route);
       document.getElementById('footer').innerHTML = Footer();
-
-      // Check element import
-      console.log(Footer())
-
       document.getElementById('app').innerHTML = routes[route]();
       document.title = page_titles[route] || 'BioKinetiX';
     }
 
     function handleNavClick(event) {
-      if (event.target.tagName !== 'A') return;
-      const href = event.target.getAttribute('href');
-      if (!href || !href.startsWith('/') || href.startsWith('//')) return;
+      const anchor = event.target.closest('a');
+      if (!anchor) return;
+      const href = anchor.getAttribute('href');
+      if (!href) return;
+      const targetUrl = new URL(href, window.location.href);
+      if (targetUrl.origin !== window.location.origin) return;
+      const route = targetUrl.pathname.replace(/^\/|\/$/g, '').split('/').pop();
+      if (!routes[route]) return;
       event.preventDefault();
-      window.history.pushState({}, '', href);
+      window.history.pushState({}, '', targetUrl.pathname);
       render();
     }
 
