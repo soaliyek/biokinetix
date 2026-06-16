@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BioKinetiX</title>
   <script>
-    //window.location.replace('pages/home.html');
+    // GitHub Pages fallback for client-side routing
   </script>
 </head>
 <body>
@@ -34,10 +34,6 @@
       const route = getRoute();
       document.getElementById('header').innerHTML = Header(route);
       document.getElementById('footer').innerHTML = Footer();
-
-      // Check element import
-      console.log(Footer())
-
       document.getElementById('app').innerHTML = routes[route]();
       document.title = page_titles[route] || 'BioKinetiX';
     }
