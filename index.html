@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <base href="/biokinetix/">
+  <!-- <base href="/biokinetix/"> -->
   <title>BioKinetiX</title>
   <script>
     //window.location.replace('pages/home.html');
@@ -11,6 +11,7 @@
 </head>
 <body>
   <header id="header"></header>
+  Hello
   <div id="app"></div>
   <footer id="footer"></footer>
 
@@ -21,17 +22,23 @@
     import About from './pages/about.js';
     import { page_titles } from './data/data.js';
 
+    // The different pages that make the app
     const routes = {
       home: Home,
       about: About,
     };
 
+    // Trim the pathname and extract the root
     function getRoute() {
+      console.log("GetRoute@pathname: ", window.location.pathname);
+
       const trimmed = window.location.pathname.replace(/^\/|\/$/g, '');
       const route = trimmed.split('/').pop();
       return routes[route] ? route : 'home';
     }
 
+    // Render the App by publishing on the header, app and footer elements
+    // the Page titles come from an array stored in data.js
     function render() {
       const route = getRoute();
       document.getElementById('header').innerHTML = Header(route);
@@ -41,14 +48,23 @@
     }
 
     function handleNavClick(event) {
+      console.log("HandleNavClick@event: ", event);
       const anchor = event.target.closest('a');
+      console.log("HandleNavClick@anchor: ", anchor);
       if (!anchor) return;
+
       const href = anchor.getAttribute('href');
+      console.log("HandleNavClick@href: ", href);
       if (!href) return;
+
       const targetUrl = new URL(href, window.location.href);
+      console.log("HandleNavClick@targetUrl: ", targetUrl);
       if (targetUrl.origin !== window.location.origin) return;
+
       const route = targetUrl.pathname.replace(/^\/|\/$/g, '').split('/').pop();
+      console.log("HandleNavClick@route: ", route);
       if (!routes[route]) return;
+
       event.preventDefault();
       window.history.pushState({}, '', targetUrl.pathname);
       render();
