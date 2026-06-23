@@ -19,10 +19,18 @@ header{
 .logo{
     height: 100%;
     width: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo img{
     height: 100%;
+}
+
+.logo h1{
+    color: white;
 }
 
 nav{

@@ -6,6 +6,7 @@ export default function Header(){
     <header>
         <div class="logo">
             <img src="${logoSrc}" alt="BioKinetiX logo" srcset="">
+            <h1>BioKinetiX</h1>
         </div>
         <nav>
             <a href="/biokinetix/index.html">Home</a>
