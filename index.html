@@ -3,9 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="components/style.css">
   <title>BioKinetiX</title>
 </head>
 <body>
+  <div id="header"></div>
   <h1>Hello</h1>
+  <div id="footer">
+    
+  </div>
+
+  <script type="module">
+    import Header from './components/header.js'
+    import Footer from './components/footer.js'
+
+    document.getElementById('header').innerHTML = Header();
+    document.getElementById('footer').innerHTML = Footer();
+  </script>
 </body>
 </html>
