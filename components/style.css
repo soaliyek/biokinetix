@@ -21,7 +21,7 @@ header{
 }
 
 nav{
-    /* background-color: aqua; */
+    /* background-color: aqua; */ 
     padding-right: 20px;
     display: flex;
     align-items: center;
@@ -36,11 +36,12 @@ nav a{
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
 }
 
 nav a:hover{
     /* background-color: blueviolet; */
-    border-bottom: solid black 2px;
+    border-bottom: solid rgb(255, 255, 255) 2px;
 }
 
 
