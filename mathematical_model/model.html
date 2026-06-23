@@ -1,218 +1,240 @@
- 
-<link rel="stylesheet" href="pk-model.css">
-<section class="pk-model" aria-labelledby="pk-model-title">
-  <!-- Styles live in pk-model.css (linked in your page <head>) -->
 
-  <p class="pk-eyebrow">Mathematical Model</p>
-  <h2 id="pk-model-title">Two-Compartment Pharmacokinetic Model</h2>
-  <p class="pk-lede">A mathematical description of how an intravenously administered drug distributes between the bloodstream and body tissues, and how it is eliminated over time — governed by a coupled system of first-order differential equations.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/biokinetix/mathematical_model/pk-model.css">
+  <link rel="stylesheet" href="/biokinetix/components/style.css">
+  <title>Model</title>
+</head>
+<body>
+  <header id="header"></header>
+  <section class="pk-model" aria-labelledby="pk-model-title">
+    <!-- Styles live in pk-model.css (linked in your page <head>) -->
+  
+    <p class="pk-eyebrow">Mathematical Model</p>
+    <h2 id="pk-model-title">Two-Compartment Pharmacokinetic Model</h2>
+    <p class="pk-lede">A mathematical description of how an intravenously administered drug distributes between the bloodstream and body tissues, and how it is eliminated over time — governed by a coupled system of first-order differential equations.</p>
+  
+    <!-- ===== 1. Compartmental Diagram ===== -->
+    <h3><span class="pk-num">01</span> Model Structure</h3>
+    <p>The body is divided into two connected compartments. The <strong>central compartment</strong> represents blood plasma and highly perfused organs; the <strong>peripheral compartment</strong> represents slowly perfused tissues. A single intravenous (IV) bolus dose enters the central compartment, from which the drug distributes to the periphery and is eliminated from the body.</p>
+  
+    <figure class="pk-figure">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" font-family="Arial, Helvetica, sans-serif">
+              <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#1A5276"/>
+                </marker>
+                <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#0E6655"/>
+                </marker>
+                <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#A93226"/>
+                </marker>
+              </defs>
+            
+              <!-- Title -->
+              <text x="380" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A5276">Two-Compartment Pharmacokinetic Model</text>
+              <text x="380" y="54" text-anchor="middle" font-size="13" fill="#666">IV Bolus Administration &#183; Intravascular Route</text>
+            
+              <!-- IV Bolus input arrow -->
+              <text x="115" y="118" text-anchor="middle" font-size="13" font-weight="bold" fill="#1A5276">IV Bolus Dose</text>
+              <text x="115" y="135" text-anchor="middle" font-size="11" fill="#666">(t = 0)</text>
+              <line x1="115" y1="145" x2="180" y2="178" stroke="#1A5276" stroke-width="2.5" marker-end="url(#arrow)"/>
+            
+              <!-- Central compartment -->
+              <rect x="185" y="155" width="210" height="130" rx="10" fill="#D6EAF8" stroke="#1A5276" stroke-width="2.5"/>
+              <text x="290" y="190" text-anchor="middle" font-size="16" font-weight="bold" fill="#1A5276">Central</text>
+              <text x="290" y="210" text-anchor="middle" font-size="16" font-weight="bold" fill="#1A5276">Compartment</text>
+              <text x="290" y="232" text-anchor="middle" font-size="12" fill="#21618C">Blood &amp; highly</text>
+              <text x="290" y="248" text-anchor="middle" font-size="12" fill="#21618C">perfused organs</text>
+              <text x="290" y="272" text-anchor="middle" font-size="14" font-weight="bold" fill="#1A5276">C<tspan font-size="10" dy="3">c</tspan><tspan dy="-3"> ,  </tspan>V<tspan font-size="10" dy="3">1</tspan></text>
+            
+              <!-- Peripheral compartment -->
+              <rect x="525" y="155" width="210" height="130" rx="10" fill="#D5F5E3" stroke="#0E6655" stroke-width="2.5"/>
+              <text x="630" y="190" text-anchor="middle" font-size="16" font-weight="bold" fill="#0E6655">Peripheral</text>
+              <text x="630" y="210" text-anchor="middle" font-size="16" font-weight="bold" fill="#0E6655">Compartment</text>
+              <text x="630" y="232" text-anchor="middle" font-size="12" fill="#148F77">Slowly perfused</text>
+              <text x="630" y="248" text-anchor="middle" font-size="12" fill="#148F77">tissues</text>
+              <text x="630" y="272" text-anchor="middle" font-size="14" font-weight="bold" fill="#0E6655">C<tspan font-size="10" dy="3">p</tspan><tspan dy="-3"> ,  </tspan>V<tspan font-size="10" dy="3">2</tspan></text>
+            
+              <!-- k12 arrow: central -> peripheral (top) -->
+              <line x1="395" y1="200" x2="525" y2="200" stroke="#1A5276" stroke-width="2.5" marker-end="url(#arrow)"/>
+              <text x="460" y="190" text-anchor="middle" font-size="15" font-weight="bold" fill="#1A5276">k<tspan font-size="11" dy="3">12</tspan></text>
+            
+              <!-- k21 arrow: peripheral -> central (bottom) -->
+              <line x1="525" y1="240" x2="395" y2="240" stroke="#0E6655" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+              <text x="460" y="258" text-anchor="middle" font-size="15" font-weight="bold" fill="#0E6655">k<tspan font-size="11" dy="3">21</tspan></text>
+            
+              <!-- k10 elimination arrow (down from central) -->
+              <line x1="290" y1="285" x2="290" y2="350" stroke="#A93226" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+              <text x="306" y="322" font-size="15" font-weight="bold" fill="#A93226">k<tspan font-size="11" dy="3">10</tspan></text>
+              <text x="290" y="372" text-anchor="middle" font-size="13" font-weight="bold" fill="#A93226">Elimination</text>
+              <text x="290" y="388" text-anchor="middle" font-size="11" fill="#A93226">(metabolism / excretion)</text>
+            
+              <!-- Legend -->
+              <rect x="488" y="316" width="247" height="90" rx="6" fill="#FBFCFC" stroke="#D5DBDB" stroke-width="1"/>
+              <text x="500" y="334" font-size="11.5" font-weight="bold" fill="#444">Rate constants (per hour):</text>
+              <text x="500" y="352" font-size="11" fill="#1A5276">k<tspan font-size="8" dy="2">12</tspan><tspan dy="-2"> = 0.50  &#8212; central &#8594; peripheral</tspan></text>
+              <text x="500" y="368" font-size="11" fill="#0E6655">k<tspan font-size="8" dy="2">21</tspan><tspan dy="-2"> = 0.25  &#8212; peripheral &#8594; central</tspan></text>
+              <text x="500" y="384" font-size="11" fill="#A93226">k<tspan font-size="8" dy="2">10</tspan><tspan dy="-2"> = 0.05  &#8212; elimination</tspan></text>
+              <text x="500" y="400" font-size="10.5" fill="#888">Initial: C<tspan font-size="8" dy="2">c</tspan><tspan dy="-2">(0)=0, C</tspan><tspan font-size="8" dy="2">p</tspan><tspan dy="-2">(0)=200 mg/L</tspan></text>
+            </svg>
+      <figcaption class="pk-figcaption">Figure 1. Compartmental schematic showing transfer rate constants (k₁₂, k₂₁), elimination (k₁₀), and the IV bolus input.</figcaption>
+    </figure>
+  
+    <!-- ===== 2. Variables ===== -->
+    <h3><span class="pk-num">02</span> State Variables</h3>
+    <p>The model tracks how drug concentration in each compartment changes as a function of time <span class="pk-sym">t</span> (in hours).</p>
+    <div class="pk-table-wrap">
+      <table class="pk-table">
+        <thead>
+          <tr><th>Variable</th><th>Symbol</th><th>Units</th><th>Meaning</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Central concentration</td><td class="pk-sym">C<sub>c</sub>(t)</td><td>mg/L</td><td>Drug concentration in blood &amp; highly perfused organs</td></tr>
+          <tr><td>Peripheral concentration</td><td class="pk-sym">C<sub>p</sub>(t)</td><td>mg/L</td><td>Drug concentration in slowly perfused tissues</td></tr>
+          <tr><td>Central amount</td><td class="pk-sym">A<sub>c</sub>(t)</td><td>mg</td><td>Mass of drug in the central compartment (A<sub>c</sub> = C<sub>c</sub> × V₁)</td></tr>
+          <tr><td>Peripheral amount</td><td class="pk-sym">A<sub>p</sub>(t)</td><td>mg</td><td>Mass of drug in the peripheral compartment (A<sub>p</sub> = C<sub>p</sub> × V₂)</td></tr>
+          <tr><td>Time</td><td class="pk-sym">t</td><td>hours</td><td>Independent variable — time since dose</td></tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- ===== 3. Parameters ===== -->
+    <h3><span class="pk-num">03</span> Parameters</h3>
+    <p>Fixed constants governing the rate of each first-order process. The transfer and elimination constants determine how quickly the drug moves and clears.</p>
+    <div class="pk-table-wrap">
+      <table class="pk-table">
+        <thead>
+          <tr><th>Parameter</th><th>Symbol</th><th>Value</th><th>Units</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Elimination rate</td><td class="pk-sym">k₁₀</td><td>0.05</td><td>h⁻¹</td><td>Irreversible elimination from the central compartment</td></tr>
+          <tr><td>Transfer C → P</td><td class="pk-sym">k₁₂</td><td>0.50</td><td>h⁻¹</td><td>Drug transfer from central to peripheral</td></tr>
+          <tr><td>Transfer P → C</td><td class="pk-sym">k₂₁</td><td>0.25</td><td>h⁻¹</td><td>Drug transfer from peripheral to central</td></tr>
+          <tr><td>Central volume</td><td class="pk-sym">V₁</td><td>—</td><td>L</td><td>Volume of distribution of central compartment</td></tr>
+          <tr><td>Peripheral volume</td><td class="pk-sym">V₂</td><td>—</td><td>L</td><td>Volume of distribution of peripheral compartment</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pk-callout">
+      <strong>Initial conditions.</strong> At <span class="pk-sym">t = 0</span>: &nbsp; C<sub>c</sub>(0) = 0 mg/L &nbsp;and&nbsp; C<sub>p</sub>(0) = 200 mg/L.
+    </div>
+  
+    <!-- ===== 4. Governing Equations ===== -->
+    <h3><span class="pk-num">04</span> Governing Equations</h3>
+  
+    <h4>Amount–concentration relationship</h4>
+    <div class="pk-eqcard">
+      <div class="pk-eqlabel">Equations 1–2</div>
+      <div data-katex>A_c(t) = C_c(t)\cdot V_1 \qquad\qquad A_p(t) = C_p(t)\cdot V_2</div>
+    </div>
+  
+    <h4>Core system of ODEs (concentration form)</h4>
+    <p>Dividing the amount equations by their volumes gives the primary governing equations solved throughout the model:</p>
+    <div class="pk-eqcard">
+      <div class="pk-eqlabel">Equation 5 &middot; Central compartment</div>
+      <div data-katex>\frac{dC_c}{dt} = -\left(k_{12} + k_{10}\right) C_c + k_{21}\, C_p</div>
+    </div>
+    <div class="pk-eqcard">
+      <div class="pk-eqlabel">Equation 6 &middot; Peripheral compartment</div>
+      <div data-katex>\frac{dC_p}{dt} = k_{12}\, C_c - k_{21}\, C_p</div>
+    </div>
+  
+    <h4>What each term represents</h4>
+    <div class="pk-table-wrap">
+      <table class="pk-table pk-term-table">
+        <thead><tr><th>Term</th><th>Pharmacokinetic meaning</th></tr></thead>
+        <tbody>
+          <tr><td>−k₁₂·C<sub>c</sub></td><td><span class="pk-pill pk-pill-c">central</span> Drug leaving for the peripheral compartment (distribution out)</td></tr>
+          <tr><td>−k₁₀·C<sub>c</sub></td><td><span class="pk-pill pk-pill-c">central</span> Drug eliminated from the body (metabolism / excretion)</td></tr>
+          <tr><td>+k₂₁·C<sub>p</sub></td><td><span class="pk-pill pk-pill-c">central</span> Drug returning from the peripheral compartment</td></tr>
+          <tr><td>+k₁₂·C<sub>c</sub></td><td><span class="pk-pill pk-pill-p">peripheral</span> Drug arriving from the central compartment</td></tr>
+          <tr><td>−k₂₁·C<sub>p</sub></td><td><span class="pk-pill pk-pill-p">peripheral</span> Drug returning to the central compartment</td></tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <h4>Matrix (state-space) form</h4>
+    <div class="pk-eqcard">
+      <div class="pk-eqlabel">Compact form</div>
+      <div data-katex>\mathbf{C}'(t) = \mathbf{A}\,\mathbf{C}(t), \quad \mathbf{A} = \begin{bmatrix} -(k_{12}+k_{10}) & k_{21} \\ k_{12} & -k_{21} \end{bmatrix} = \begin{bmatrix} -0.55 & 0.25 \\ 0.50 & -0.25 \end{bmatrix}</div>
+    </div>
+  
+    <!-- ===== 5. Analytical Solution ===== -->
+    <h3><span class="pk-num">05</span> Analytical (Exact) Solution</h3>
+    <p>Solving the eigenvalue problem of <span class="pk-sym">A</span> yields two eigenvalues that correspond to the fast distributive phase and the slow terminal phase:</p>
+    <div class="pk-eqcard">
+      <div class="pk-eqlabel">Eigenvalues</div>
+      <div data-katex>\lambda^2 + 0.8\lambda + 0.0125 = 0 \;\Rightarrow\; \lambda_1 = -0.0159,\quad \lambda_2 = -0.7841</div>
+    </div>
+    <p>Applying the initial conditions gives the closed-form bi-exponential solutions for each compartment:</p>
+    <div class="pk-eqcard">
+      <div class="pk-eqlabel">Equation 29 &middot; Central</div>
+      <div data-katex>C_c(t) = 65.089\,e^{-0.0159\,t} - 65.09\,e^{-0.7841\,t}</div>
+    </div>
+    <div class="pk-eqcard">
+      <div class="pk-eqlabel">Equation 30 &middot; Peripheral</div>
+      <div data-katex>C_p(t) = 139.05\,e^{-0.0159\,t} - 60.94\,e^{-0.7841\,t}</div>
+    </div>
+    <div class="pk-callout">
+      The first exponential term (slow <span class="pk-sym">λ₁</span>) captures the terminal elimination phase; the second (fast <span class="pk-sym">λ₂</span>) captures the rapid initial distribution.
+    </div>
+  
+    <!-- ===== 6. Numerical Methods ===== -->
+    <h3><span class="pk-num">06</span> Numerical Methods &amp; Accuracy</h3>
+    <p>The ODE system is solved at discrete steps (Δt = 0.1 h) using three methods, then compared against the exact solution. Lower overall error is better.</p>
+    <div class="pk-table-wrap">
+      <table class="pk-table">
+        <thead>
+          <tr><th>Method</th><th>Central error</th><th>Peripheral error</th><th>Overall error</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Euler (1st order)</td><td>0.2771</td><td>0.2953</td><td class="pk-worst">28.62%</td></tr>
+          <tr><td>Adams–Bashforth–Moulton</td><td>0.0663</td><td>0.0868</td><td class="pk-mid">7.66%</td></tr>
+          <tr><td>4th-order Runge–Kutta &nbsp;✓</td><td>0.0086</td><td>0.0221</td><td class="pk-best">1.54%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The <strong>fourth-order Runge–Kutta method</strong> tracks the analytical solution most closely, with an overall average error of just 1.54% — making it the recommended scheme for this system.</p>
+  
+    <p style="font-size:0.82rem; color:var(--pk-muted); margin-top:2.5rem; border-top:1px solid var(--pk-line); padding-top:1rem;">
+      Model based on: Fatima K, Ali B, Khan AA, Ahmed S, Ateya AA, Ahmad N. <em>A Comparative Analysis of Numerical Methods for Mathematical Modelling of Intravascular Drug Concentrations Using a Two-Compartment Pharmacokinetic Model.</em> Math. Comput. Appl. 2025, 30, 70. <a href="https://doi.org/10.3390/mca30040070" style="color:var(--pk-central);">doi.org/10.3390/mca30040070</a>
+    </p>
+  
+    <!-- KaTeX: renders the equations marked with data-katex -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        function renderPK() {
+          document.querySelectorAll('.pk-model [data-katex]').forEach(function (el) {
+            try { katex.render(el.textContent, el, { displayMode: true, throwOnError: false }); }
+            catch (e) { /* leave raw text if KaTeX unavailable */ }
+          });
+        }
+        if (window.katex) { renderPK(); }
+        else {
+          var check = setInterval(function () {
+            if (window.katex) { clearInterval(check); renderPK(); }
+          }, 50);
+          setTimeout(function () { clearInterval(check); }, 5000);
+        }
+      });
+    </script>
+  </section>
 
-  <!-- ===== 1. Compartmental Diagram ===== -->
-  <h3><span class="pk-num">01</span> Model Structure</h3>
-  <p>The body is divided into two connected compartments. The <strong>central compartment</strong> represents blood plasma and highly perfused organs; the <strong>peripheral compartment</strong> represents slowly perfused tissues. A single intravenous (IV) bolus dose enters the central compartment, from which the drug distributes to the periphery and is eliminated from the body.</p>
+  <footer id="footer"></footer>
 
-  <figure class="pk-figure">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" font-family="Arial, Helvetica, sans-serif">
-            <defs>
-              <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#1A5276"/>
-              </marker>
-              <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#0E6655"/>
-              </marker>
-              <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#A93226"/>
-              </marker>
-            </defs>
-          
-            <!-- Title -->
-            <text x="380" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1A5276">Two-Compartment Pharmacokinetic Model</text>
-            <text x="380" y="54" text-anchor="middle" font-size="13" fill="#666">IV Bolus Administration &#183; Intravascular Route</text>
-          
-            <!-- IV Bolus input arrow -->
-            <text x="115" y="118" text-anchor="middle" font-size="13" font-weight="bold" fill="#1A5276">IV Bolus Dose</text>
-            <text x="115" y="135" text-anchor="middle" font-size="11" fill="#666">(t = 0)</text>
-            <line x1="115" y1="145" x2="180" y2="178" stroke="#1A5276" stroke-width="2.5" marker-end="url(#arrow)"/>
-          
-            <!-- Central compartment -->
-            <rect x="185" y="155" width="210" height="130" rx="10" fill="#D6EAF8" stroke="#1A5276" stroke-width="2.5"/>
-            <text x="290" y="190" text-anchor="middle" font-size="16" font-weight="bold" fill="#1A5276">Central</text>
-            <text x="290" y="210" text-anchor="middle" font-size="16" font-weight="bold" fill="#1A5276">Compartment</text>
-            <text x="290" y="232" text-anchor="middle" font-size="12" fill="#21618C">Blood &amp; highly</text>
-            <text x="290" y="248" text-anchor="middle" font-size="12" fill="#21618C">perfused organs</text>
-            <text x="290" y="272" text-anchor="middle" font-size="14" font-weight="bold" fill="#1A5276">C<tspan font-size="10" dy="3">c</tspan><tspan dy="-3"> ,  </tspan>V<tspan font-size="10" dy="3">1</tspan></text>
-          
-            <!-- Peripheral compartment -->
-            <rect x="525" y="155" width="210" height="130" rx="10" fill="#D5F5E3" stroke="#0E6655" stroke-width="2.5"/>
-            <text x="630" y="190" text-anchor="middle" font-size="16" font-weight="bold" fill="#0E6655">Peripheral</text>
-            <text x="630" y="210" text-anchor="middle" font-size="16" font-weight="bold" fill="#0E6655">Compartment</text>
-            <text x="630" y="232" text-anchor="middle" font-size="12" fill="#148F77">Slowly perfused</text>
-            <text x="630" y="248" text-anchor="middle" font-size="12" fill="#148F77">tissues</text>
-            <text x="630" y="272" text-anchor="middle" font-size="14" font-weight="bold" fill="#0E6655">C<tspan font-size="10" dy="3">p</tspan><tspan dy="-3"> ,  </tspan>V<tspan font-size="10" dy="3">2</tspan></text>
-          
-            <!-- k12 arrow: central -> peripheral (top) -->
-            <line x1="395" y1="200" x2="525" y2="200" stroke="#1A5276" stroke-width="2.5" marker-end="url(#arrow)"/>
-            <text x="460" y="190" text-anchor="middle" font-size="15" font-weight="bold" fill="#1A5276">k<tspan font-size="11" dy="3">12</tspan></text>
-          
-            <!-- k21 arrow: peripheral -> central (bottom) -->
-            <line x1="525" y1="240" x2="395" y2="240" stroke="#0E6655" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
-            <text x="460" y="258" text-anchor="middle" font-size="15" font-weight="bold" fill="#0E6655">k<tspan font-size="11" dy="3">21</tspan></text>
-          
-            <!-- k10 elimination arrow (down from central) -->
-            <line x1="290" y1="285" x2="290" y2="350" stroke="#A93226" stroke-width="2.5" marker-end="url(#arrowRed)"/>
-            <text x="306" y="322" font-size="15" font-weight="bold" fill="#A93226">k<tspan font-size="11" dy="3">10</tspan></text>
-            <text x="290" y="372" text-anchor="middle" font-size="13" font-weight="bold" fill="#A93226">Elimination</text>
-            <text x="290" y="388" text-anchor="middle" font-size="11" fill="#A93226">(metabolism / excretion)</text>
-          
-            <!-- Legend -->
-            <rect x="488" y="316" width="247" height="90" rx="6" fill="#FBFCFC" stroke="#D5DBDB" stroke-width="1"/>
-            <text x="500" y="334" font-size="11.5" font-weight="bold" fill="#444">Rate constants (per hour):</text>
-            <text x="500" y="352" font-size="11" fill="#1A5276">k<tspan font-size="8" dy="2">12</tspan><tspan dy="-2"> = 0.50  &#8212; central &#8594; peripheral</tspan></text>
-            <text x="500" y="368" font-size="11" fill="#0E6655">k<tspan font-size="8" dy="2">21</tspan><tspan dy="-2"> = 0.25  &#8212; peripheral &#8594; central</tspan></text>
-            <text x="500" y="384" font-size="11" fill="#A93226">k<tspan font-size="8" dy="2">10</tspan><tspan dy="-2"> = 0.05  &#8212; elimination</tspan></text>
-            <text x="500" y="400" font-size="10.5" fill="#888">Initial: C<tspan font-size="8" dy="2">c</tspan><tspan dy="-2">(0)=0, C</tspan><tspan font-size="8" dy="2">p</tspan><tspan dy="-2">(0)=200 mg/L</tspan></text>
-          </svg>
-    <figcaption class="pk-figcaption">Figure 1. Compartmental schematic showing transfer rate constants (k₁₂, k₂₁), elimination (k₁₀), and the IV bolus input.</figcaption>
-  </figure>
+  <script type="module">
+    import Header from '/biokinetix/components/header.js';
+    import Footer from '/biokinetix/components/footer.js';
 
-  <!-- ===== 2. Variables ===== -->
-  <h3><span class="pk-num">02</span> State Variables</h3>
-  <p>The model tracks how drug concentration in each compartment changes as a function of time <span class="pk-sym">t</span> (in hours).</p>
-  <div class="pk-table-wrap">
-    <table class="pk-table">
-      <thead>
-        <tr><th>Variable</th><th>Symbol</th><th>Units</th><th>Meaning</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Central concentration</td><td class="pk-sym">C<sub>c</sub>(t)</td><td>mg/L</td><td>Drug concentration in blood &amp; highly perfused organs</td></tr>
-        <tr><td>Peripheral concentration</td><td class="pk-sym">C<sub>p</sub>(t)</td><td>mg/L</td><td>Drug concentration in slowly perfused tissues</td></tr>
-        <tr><td>Central amount</td><td class="pk-sym">A<sub>c</sub>(t)</td><td>mg</td><td>Mass of drug in the central compartment (A<sub>c</sub> = C<sub>c</sub> × V₁)</td></tr>
-        <tr><td>Peripheral amount</td><td class="pk-sym">A<sub>p</sub>(t)</td><td>mg</td><td>Mass of drug in the peripheral compartment (A<sub>p</sub> = C<sub>p</sub> × V₂)</td></tr>
-        <tr><td>Time</td><td class="pk-sym">t</td><td>hours</td><td>Independent variable — time since dose</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- ===== 3. Parameters ===== -->
-  <h3><span class="pk-num">03</span> Parameters</h3>
-  <p>Fixed constants governing the rate of each first-order process. The transfer and elimination constants determine how quickly the drug moves and clears.</p>
-  <div class="pk-table-wrap">
-    <table class="pk-table">
-      <thead>
-        <tr><th>Parameter</th><th>Symbol</th><th>Value</th><th>Units</th><th>Description</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Elimination rate</td><td class="pk-sym">k₁₀</td><td>0.05</td><td>h⁻¹</td><td>Irreversible elimination from the central compartment</td></tr>
-        <tr><td>Transfer C → P</td><td class="pk-sym">k₁₂</td><td>0.50</td><td>h⁻¹</td><td>Drug transfer from central to peripheral</td></tr>
-        <tr><td>Transfer P → C</td><td class="pk-sym">k₂₁</td><td>0.25</td><td>h⁻¹</td><td>Drug transfer from peripheral to central</td></tr>
-        <tr><td>Central volume</td><td class="pk-sym">V₁</td><td>—</td><td>L</td><td>Volume of distribution of central compartment</td></tr>
-        <tr><td>Peripheral volume</td><td class="pk-sym">V₂</td><td>—</td><td>L</td><td>Volume of distribution of peripheral compartment</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="pk-callout">
-    <strong>Initial conditions.</strong> At <span class="pk-sym">t = 0</span>: &nbsp; C<sub>c</sub>(0) = 0 mg/L &nbsp;and&nbsp; C<sub>p</sub>(0) = 200 mg/L.
-  </div>
-
-  <!-- ===== 4. Governing Equations ===== -->
-  <h3><span class="pk-num">04</span> Governing Equations</h3>
-
-  <h4>Amount–concentration relationship</h4>
-  <div class="pk-eqcard">
-    <div class="pk-eqlabel">Equations 1–2</div>
-    <div data-katex>A_c(t) = C_c(t)\cdot V_1 \qquad\qquad A_p(t) = C_p(t)\cdot V_2</div>
-  </div>
-
-  <h4>Core system of ODEs (concentration form)</h4>
-  <p>Dividing the amount equations by their volumes gives the primary governing equations solved throughout the model:</p>
-  <div class="pk-eqcard">
-    <div class="pk-eqlabel">Equation 5 &middot; Central compartment</div>
-    <div data-katex>\frac{dC_c}{dt} = -\left(k_{12} + k_{10}\right) C_c + k_{21}\, C_p</div>
-  </div>
-  <div class="pk-eqcard">
-    <div class="pk-eqlabel">Equation 6 &middot; Peripheral compartment</div>
-    <div data-katex>\frac{dC_p}{dt} = k_{12}\, C_c - k_{21}\, C_p</div>
-  </div>
-
-  <h4>What each term represents</h4>
-  <div class="pk-table-wrap">
-    <table class="pk-table pk-term-table">
-      <thead><tr><th>Term</th><th>Pharmacokinetic meaning</th></tr></thead>
-      <tbody>
-        <tr><td>−k₁₂·C<sub>c</sub></td><td><span class="pk-pill pk-pill-c">central</span> Drug leaving for the peripheral compartment (distribution out)</td></tr>
-        <tr><td>−k₁₀·C<sub>c</sub></td><td><span class="pk-pill pk-pill-c">central</span> Drug eliminated from the body (metabolism / excretion)</td></tr>
-        <tr><td>+k₂₁·C<sub>p</sub></td><td><span class="pk-pill pk-pill-c">central</span> Drug returning from the peripheral compartment</td></tr>
-        <tr><td>+k₁₂·C<sub>c</sub></td><td><span class="pk-pill pk-pill-p">peripheral</span> Drug arriving from the central compartment</td></tr>
-        <tr><td>−k₂₁·C<sub>p</sub></td><td><span class="pk-pill pk-pill-p">peripheral</span> Drug returning to the central compartment</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h4>Matrix (state-space) form</h4>
-  <div class="pk-eqcard">
-    <div class="pk-eqlabel">Compact form</div>
-    <div data-katex>\mathbf{C}'(t) = \mathbf{A}\,\mathbf{C}(t), \quad \mathbf{A} = \begin{bmatrix} -(k_{12}+k_{10}) & k_{21} \\ k_{12} & -k_{21} \end{bmatrix} = \begin{bmatrix} -0.55 & 0.25 \\ 0.50 & -0.25 \end{bmatrix}</div>
-  </div>
-
-  <!-- ===== 5. Analytical Solution ===== -->
-  <h3><span class="pk-num">05</span> Analytical (Exact) Solution</h3>
-  <p>Solving the eigenvalue problem of <span class="pk-sym">A</span> yields two eigenvalues that correspond to the fast distributive phase and the slow terminal phase:</p>
-  <div class="pk-eqcard">
-    <div class="pk-eqlabel">Eigenvalues</div>
-    <div data-katex>\lambda^2 + 0.8\lambda + 0.0125 = 0 \;\Rightarrow\; \lambda_1 = -0.0159,\quad \lambda_2 = -0.7841</div>
-  </div>
-  <p>Applying the initial conditions gives the closed-form bi-exponential solutions for each compartment:</p>
-  <div class="pk-eqcard">
-    <div class="pk-eqlabel">Equation 29 &middot; Central</div>
-    <div data-katex>C_c(t) = 65.089\,e^{-0.0159\,t} - 65.09\,e^{-0.7841\,t}</div>
-  </div>
-  <div class="pk-eqcard">
-    <div class="pk-eqlabel">Equation 30 &middot; Peripheral</div>
-    <div data-katex>C_p(t) = 139.05\,e^{-0.0159\,t} - 60.94\,e^{-0.7841\,t}</div>
-  </div>
-  <div class="pk-callout">
-    The first exponential term (slow <span class="pk-sym">λ₁</span>) captures the terminal elimination phase; the second (fast <span class="pk-sym">λ₂</span>) captures the rapid initial distribution.
-  </div>
-
-  <!-- ===== 6. Numerical Methods ===== -->
-  <h3><span class="pk-num">06</span> Numerical Methods &amp; Accuracy</h3>
-  <p>The ODE system is solved at discrete steps (Δt = 0.1 h) using three methods, then compared against the exact solution. Lower overall error is better.</p>
-  <div class="pk-table-wrap">
-    <table class="pk-table">
-      <thead>
-        <tr><th>Method</th><th>Central error</th><th>Peripheral error</th><th>Overall error</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Euler (1st order)</td><td>0.2771</td><td>0.2953</td><td class="pk-worst">28.62%</td></tr>
-        <tr><td>Adams–Bashforth–Moulton</td><td>0.0663</td><td>0.0868</td><td class="pk-mid">7.66%</td></tr>
-        <tr><td>4th-order Runge–Kutta &nbsp;✓</td><td>0.0086</td><td>0.0221</td><td class="pk-best">1.54%</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p>The <strong>fourth-order Runge–Kutta method</strong> tracks the analytical solution most closely, with an overall average error of just 1.54% — making it the recommended scheme for this system.</p>
-
-  <p style="font-size:0.82rem; color:var(--pk-muted); margin-top:2.5rem; border-top:1px solid var(--pk-line); padding-top:1rem;">
-    Model based on: Fatima K, Ali B, Khan AA, Ahmed S, Ateya AA, Ahmad N. <em>A Comparative Analysis of Numerical Methods for Mathematical Modelling of Intravascular Drug Concentrations Using a Two-Compartment Pharmacokinetic Model.</em> Math. Comput. Appl. 2025, 30, 70. <a href="https://doi.org/10.3390/mca30040070" style="color:var(--pk-central);">doi.org/10.3390/mca30040070</a>
-  </p>
-
-  <!-- KaTeX: renders the equations marked with data-katex -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      function renderPK() {
-        document.querySelectorAll('.pk-model [data-katex]').forEach(function (el) {
-          try { katex.render(el.textContent, el, { displayMode: true, throwOnError: false }); }
-          catch (e) { /* leave raw text if KaTeX unavailable */ }
-        });
-      }
-      if (window.katex) { renderPK(); }
-      else {
-        var check = setInterval(function () {
-          if (window.katex) { clearInterval(check); renderPK(); }
-        }, 50);
-        setTimeout(function () { clearInterval(check); }, 5000);
-      }
-    });
+    document.getElementById('header').innerHTML = Header();
+    document.getElementById('footer').innerHTML = Footer();
   </script>
-</section>
+</body>
+</html>
