@@ -1,5 +1,10 @@
+@font-face {
+    font-family: ubuntu;
+    src: url('/biokinetix/assets/Ubuntu-Regular.woff');
+}
+
 *{
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    font-family: ubuntu;
 }
 
 header{

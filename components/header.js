@@ -1,6 +1,6 @@
 
 export default function Header(){
-    const logoSrc = '/biokinetix/data/logo.png';
+    const logoSrc = '/biokinetix/assets/logo.png';
 
     return `
     <header>
