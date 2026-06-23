@@ -1,3 +1,7 @@
+body{
+    margin: auto;
+}
+
 @font-face {
     font-family: 'ubuntu';
     src: url('/biokinetix/assets/Ubuntu-Regular.woff');
@@ -8,7 +12,7 @@
 }
 
 header{
-    background-color: rgb(196, 115, 17);
+    background-color: white;
     height: 50px;
 
     display: flex;
@@ -29,7 +33,7 @@ header{
 }
 
 .logo h1{
-    color: white;
+    color: #ff751f;
 }
 
 nav{
@@ -48,12 +52,12 @@ nav a{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #ff751f;
 }
 
 nav a:hover{
     /* background-color: blueviolet; */
-    border-bottom: solid rgb(255, 255, 255) 2px;
+    border-bottom: solid #00bf63 2px;
 }
 
 
