@@ -1,0 +1,162 @@
+/* ============================================================
+   Two-Compartment Pharmacokinetic Model — Stylesheet
+   Pair with: pk-model.html
+   All rules are scoped under .pk-model so they won't
+   collide with the rest of your site's styles.
+   ============================================================ */
+
+.pk-model {
+  --pk-ink: #1A2B3C;
+  --pk-muted: #5B6B7B;
+  --pk-central: #1A5276;
+  --pk-central-bg: #EAF2F8;
+  --pk-peripheral: #0E6655;
+  --pk-peripheral-bg: #E8F6F0;
+  --pk-elim: #A93226;
+  --pk-line: #E2E8EE;
+  --pk-card: #FFFFFF;
+  --pk-page: #FBFCFD;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--pk-ink);
+  line-height: 1.65;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+  background: var(--pk-page);
+}
+.pk-model * { box-sizing: border-box; }
+.pk-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--pk-central);
+  margin: 0 0 0.5rem;
+}
+.pk-model h2 {
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  line-height: 1.15;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+.pk-lede {
+  font-size: 1.05rem;
+  color: var(--pk-muted);
+  margin: 0 0 2.5rem;
+  max-width: 62ch;
+}
+.pk-model h3 {
+  font-size: 1.35rem;
+  font-weight: 650;
+  margin: 2.75rem 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--pk-line);
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+.pk-num {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--pk-central);
+  font-variant-numeric: tabular-nums;
+}
+.pk-model h4 {
+  font-size: 1.05rem;
+  font-weight: 650;
+  margin: 1.75rem 0 0.6rem;
+  color: var(--pk-central);
+}
+.pk-model p { margin: 0 0 1rem; }
+.pk-figure {
+  background: var(--pk-card);
+  border: 1px solid var(--pk-line);
+  border-radius: 14px;
+  padding: 1.5rem 1rem;
+  margin: 1.5rem 0 2rem;
+  box-shadow: 0 1px 3px rgba(20,40,60,0.04);
+}
+.pk-figure svg { width: 100%; height: auto; display: block; }
+.pk-figcaption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--pk-muted);
+  margin-top: 0.9rem;
+  font-style: italic;
+}
+.pk-table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+.pk-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  background: var(--pk-card);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.pk-table th {
+  background: var(--pk-central);
+  color: #fff;
+  text-align: left;
+  padding: 0.7rem 0.85rem;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+.pk-table td {
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--pk-line);
+  vertical-align: top;
+}
+.pk-table tr:nth-child(even) td { background: #F7FAFC; }
+.pk-table tr:last-child td { border-bottom: none; }
+.pk-sym { font-family: "Cambria Math", Georgia, serif; font-style: italic; white-space: nowrap; }
+.pk-eqcard {
+  background: var(--pk-card);
+  border: 1px solid var(--pk-line);
+  border-left: 4px solid var(--pk-central);
+  border-radius: 10px;
+  padding: 1.1rem 1.3rem;
+  margin: 1.1rem 0;
+}
+.pk-eqcard .pk-eqlabel {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--pk-central);
+  margin-bottom: 0.6rem;
+}
+.pk-eqcard .katex-display { margin: 0.4rem 0; }
+.pk-term-table td:first-child {
+  font-family: "Cambria Math", Georgia, serif;
+  white-space: nowrap;
+  width: 1%;
+  font-weight: 500;
+}
+.pk-pill {
+  display: inline-block;
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.pk-pill-c { background: var(--pk-central-bg); color: var(--pk-central); }
+.pk-pill-p { background: var(--pk-peripheral-bg); color: var(--pk-peripheral); }
+.pk-best { color: var(--pk-peripheral); font-weight: 700; }
+.pk-worst { color: var(--pk-elim); font-weight: 700; }
+.pk-mid { color: #B7950B; font-weight: 700; }
+.pk-callout {
+  background: var(--pk-central-bg);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  margin: 1.25rem 0;
+  font-size: 0.95rem;
+  color: var(--pk-ink);
+}
+.pk-callout strong { color: var(--pk-central); }
+@media (max-width: 560px) {
+  .pk-model { padding: 1.5rem 1rem 2.5rem; }
+  .pk-table { font-size: 0.84rem; }
+  .pk-table th, .pk-table td { padding: 0.5rem 0.6rem; }
+}
