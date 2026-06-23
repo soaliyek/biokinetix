@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/biokinetix/components/style.css">
+  <link rel="stylesheet" href="/biokinetix/pages/team.css">
+  <title>BioKinetiX</title>
+</head>
+<body>
+  <div id="header"></div>
+  <h1>Hello!<br>This is the Team Page</h1>
+  <div id="footer"></div>
+
+  <script type="module">
+    import Header from '/biokinetix/components/header.js';
+    import Footer from '/biokinetix/components/footer.js';
+
+    document.getElementById('header').innerHTML = Header();
+    document.getElementById('footer').innerHTML = Footer();
+  </script>
+</body>
+</html>
