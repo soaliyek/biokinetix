@@ -1,10 +1,10 @@
 @font-face {
-    font-family: ubuntu;
+    font-family: 'ubuntu';
     src: url('/biokinetix/assets/Ubuntu-Regular.woff');
 }
 
 *{
-    font-family: ubuntu;
+    font-family: 'ubuntu';
 }
 
 header{
