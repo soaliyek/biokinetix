@@ -1,3 +1,4 @@
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +19,341 @@
     import Footer from './components/footer.js';
 
     document.getElementById('header').innerHTML = Header();
+    document.getElementById('footer').innerHTML = Footer();
+  </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BioKinetiX</title>
+  <link rel="stylesheet" href="/biokinetix/components/style.css">
+  <link rel="stylesheet" href="index.css">
+  
+  <style>
+    /* ── Hero ─────────────────────────────── */
+    .hero {
+      /* background: linear-gradient(135deg, #1a1a2e 0%, #2d2d5e 60%, #16213e 100%); */
+      background-color: #386851;
+      color: white;
+      padding: 96px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+/* 
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,117,31,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: -60px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,191,99,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    } */
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero h1 { color: white; margin-bottom: 20px; }
+    .hero h1 span { color: var(--orange); }
+
+    .hero-lead {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* Diagram placeholder */
+    .hero-diagram {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 32px;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    /* Stats bar */
+    .stats-bar {
+      background: var(--orange);
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 0 16px;
+      border-right: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: rgb(56,104,81);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label { font-size: 0.78rem; color: rgba(255, 255, 255,0.7); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Preview sections */
+    .preview-section {
+      border-top: 1px solid var(--border);
+      padding: 56px 0;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .preview-grid.reverse { direction: rtl; }
+    .preview-grid.reverse > * { direction: ltr; }
+
+    .preview-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+
+    .preview-text h2 { margin-bottom: 14px; }
+    .preview-text p { color: var(--muted); margin-bottom: 20px; }
+
+    .preview-img {
+      border-radius: 10px;
+      background: var(--light);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .preview-img .img-placeholder { min-height: 240px; }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-diagram { display: none; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .stat-item { border-right: none; }
+      .preview-grid { grid-template-columns: 1fr; }
+      .preview-grid.reverse { direction: ltr; }
+    }
+  </style>
+  
+</head>
+<body>
+  
+  <div id="header"></div>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <h1>Modelling Drug Kinetics with <span>Mathematical Precision</span></h1>
+            <p class="hero-lead">
+              A two-compartment pharmacokinetic model that predicts drug concentration in the bloodstream
+              and tissues, built to improve antibiotic dosing for sepsis patients.
+            </p>
+            <div class="hero-actions">
+              <a href="/biokinetix/pages/model.html" class="btn btn-primary">Explore the Model</a>
+              <a href="/biokinetix/pages/simulation.html" class="btn btn-ghost">View Simulation</a>
+            </div>
+          </div>
+
+          <div class="hero-diagram">
+            DO NOT FORGET to put compartments or similar image here!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="container">
+        <div class="stats-inner">
+          <div class="stat-item">
+            <div class="stat-number">48.9M</div>
+            <div class="stat-label">Global sepsis cases (2017)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">38%</div>
+            <div class="stat-label">In-hospital mortality, sub-Saharan Africa</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Numerical methods compared</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">1.54%</div>
+            <div class="stat-label">Best method average error (RK4)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT PREVIEW -->
+    <div class="preview-section">
+      <div class="container">
+        <div class="preview-grid">
+          <div class="preview-text">
+            <!-- <span class="preview-tag">The Problem</span> -->
+            <h2>Why Dosing Gets It Wrong</h2>
+            <p>
+              In African hospitals, clinicians rely on weight-based dosing tables that cannot account for
+              individual physiology. Critically ill sepsis patients distribute drugs differently, and the
+              consequences of getting it wrong with antibiotics like gentamicin are severe and irreversible.
+            </p>
+            <p>
+              This project builds a mathematical framework that predicts, at any moment after injection,
+              exactly how much drug is in the bloodstream and how much has reached the tissues.
+            </p>
+            <a href="/biokinetix/pages/about.html" class="btn btn-outline">Read the Full Context →</a>
+          </div>
+          <div class="preview-img">
+            <div class="img-placeholder" style="min-height:240px;">
+              <span style="font-size:2.5rem;">DO NOT FORGET</span>
+              <span>Sepsis &amp; Drug Dosing Context</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODEL PREVIEW -->
+    <div class="preview-section" style="background:var(--gray);">
+      <div class="container">
+        <div class="preview-grid reverse">
+          <div class="preview-text">
+            <!-- <span class="preview-tag">The Mathematics</span> -->
+            <h2>A Two-Compartment ODE System</h2>
+            <p>
+              The model treats the body as two connected spaces: the central compartment (bloodstream)
+              and the peripheral compartment (tissues). Drug concentration in each is governed by
+              coupled first-order linear ODEs with three rate constants: k₁₀, k₁₂, and k₂₁.
+            </p>
+            <div class="math-block" style="font-size:0.85rem; margin:16px 0;">
+              dCc/dt = −(k₁₂ + k₁₀)Cc + k₂₁Cp<br>
+              dCp/dt = k₁₂Cc − k₂₁Cp
+            </div>
+            <a href="/biokinetix/pages/model.html" class="btn btn-outline">Explore the Model →</a>
+          </div>
+          <div class="preview-img">
+            <div class="img-placeholder" style="min-height:240px;">
+              <span style="font-size:2.5rem;">DO NOT FORGET</span>
+              <span>Compartment Diagram</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIMULATION PREVIEW -->
+    <div class="preview-section">
+      <div class="container">
+        <div class="preview-grid">
+          <div class="preview-text">
+            <!-- <span class="preview-tag">Numerical Methods</span> -->
+            <h2>Simulating Drug Concentration Profiles</h2>
+            <p>
+              We implemented and compared three solvers: Euler, fourth-order Runge–Kutta, and
+              Adams–Bashforth–Moulton, to simulate how gentamicin distributes over a 10-hour window.
+              Each is benchmarked against the exact analytical solution.
+            </p>
+            <a href="/biokinetix/pages/simulation.html" class="btn btn-outline">View Simulation Results →</a>
+          </div>
+          <div class="preview-img">
+            <div class="img-placeholder" style="min-height:240px;">
+              <span style="font-size:2.5rem;">DO NOT FORGET</span>
+              <span>Concentration profile graphs</span>
+              <span style="font-size:0.8rem; color:#aaa;">(Insert Figure 1 from MATLAB here)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANALYSIS PREVIEW -->
+    <div class="preview-section" style="background:var(--gray);">
+      <div class="container">
+        <div class="preview-grid reverse">
+          <div class="preview-text">
+            <!-- <span class="preview-tag">Critical Review</span> -->
+            <h2>What the Paper Actually Contributed</h2>
+            <p>
+              The underlying ODE system is the classical mammillary open two-compartment model,
+              unchanged from Gibaldi (1969). The paper's contribution sits entirely in the numerical
+              methods comparison. We examine both what was retained from the classical model and
+              what the authors actually did that was new.
+            </p>
+            <a href="/biokinetix/pages/analysis.html" class="btn btn-outline">Read the Analysis →</a>
+          </div>
+          <div class="preview-img">
+            <div class="img-placeholder" style="min-height:240px;">
+              <span style="font-size:2.5rem;">DO NOT FORGET</span>
+              <span>Model analysis &amp; critical review</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEAM PREVIEW -->
+    <div class="preview-section" style="background: linear-gradient(135deg, var(--green) 0%, #386851 100%); color:white;">
+      <div class="container" style="text-align:center;">
+        <!-- <span class="section-label">The People Behind It</span> -->
+        <h2 style="color:white; margin-bottom:12px;">Meet the Team</h2>
+        <p style="color:rgba(255,255,255,0.65); max-width:520px; margin:0 auto 32px;">
+          We are a team of six (6) students from Ashesi University, combining backgrounds in mathematics,
+          computer science, and engineering to bridge abstract modelling and real clinical outcomes.
+        </p>
+        <a href="/biokinetix/pages/team.html" class="btn btn-ghost">Meet the Team →</a>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script type="module">
+    import Header from '/biokinetix/components/header.js';
+    import Footer from '/biokinetix/components/footer.js';
+    document.getElementById('header').innerHTML = Header('home');
     document.getElementById('footer').innerHTML = Footer();
   </script>
 </body>
