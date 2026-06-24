@@ -1,162 +1,238 @@
-/* ============================================================
-   Two-Compartment Pharmacokinetic Model — Stylesheet
-   Pair with: pk-model.html
-   All rules are scoped under .pk-model so they won't
-   collide with the rest of your site's styles.
-   ============================================================ */
+/* ================================================================
+   Model Page Styles — BioKinetiX
+   ================================================================ */
 
-.pk-model {
-  --pk-ink: #1A2B3C;
-  --pk-muted: #5B6B7B;
-  --pk-central: #1A5276;
-  --pk-central-bg: #EAF2F8;
-  --pk-peripheral: #0E6655;
-  --pk-peripheral-bg: #E8F6F0;
-  --pk-elim: #A93226;
-  --pk-line: #E2E8EE;
-  --pk-card: #FFFFFF;
-  --pk-page: #FBFCFD;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: var(--pk-ink);
-  line-height: 1.65;
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 2rem 1.25rem 3rem;
-  background: var(--pk-page);
+.page-hero h1 { color: white; }
+
+/* ── Two-column layout ──────────────────────────────────────── */
+.model-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 56px;
+  align-items: start;
 }
-.pk-model * { box-sizing: border-box; }
-.pk-eyebrow {
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+
+/* ── Sticky sidebar TOC ─────────────────────────────────────── */
+.model-toc {
+  position: sticky;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.toc-title {
+  font-size: 0.72rem;
   text-transform: uppercase;
-  font-weight: 600;
-  color: var(--pk-central);
-  margin: 0 0 0.5rem;
-}
-.pk-model h2 {
-  font-size: clamp(1.7rem, 4vw, 2.3rem);
-  line-height: 1.15;
+  letter-spacing: 1.2px;
+  color: var(--muted);
   font-weight: 700;
-  margin: 0 0 0.5rem;
-  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  margin-top: 0 !important;
 }
-.pk-lede {
-  font-size: 1.05rem;
-  color: var(--pk-muted);
-  margin: 0 0 2.5rem;
-  max-width: 62ch;
+
+.model-toc a {
+  font-size: 0.84rem;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border-left: 2px solid transparent;
+  transition: all 0.15s;
+  line-height: 1.3;
 }
-.pk-model h3 {
-  font-size: 1.35rem;
-  font-weight: 650;
-  margin: 2.75rem 0 0.75rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 2px solid var(--pk-line);
+
+.model-toc a:hover {
+  color: var(--orange);
+  background: var(--light);
+  border-left-color: var(--orange);
+}
+
+/* ── Model sections ─────────────────────────────────────────── */
+.model-section {
+  margin-bottom: 64px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+.model-section:last-child { border-bottom: none; margin-bottom: 0; }
+
+.model-section h2 {
   display: flex;
   align-items: baseline;
-  gap: 0.6rem;
+  gap: 12px;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--navy);
 }
-.pk-num {
-  font-size: 0.95rem;
+
+.sec-num {
+  font-size: 0.9rem;
   font-weight: 700;
-  color: var(--pk-central);
+  color: var(--orange);
   font-variant-numeric: tabular-nums;
 }
-.pk-model h4 {
+
+.model-section h3 {
   font-size: 1.05rem;
-  font-weight: 650;
-  margin: 1.75rem 0 0.6rem;
-  color: var(--pk-central);
+  font-weight: 700;
+  color: var(--navy);
+  margin: 28px 0 10px;
 }
-.pk-model p { margin: 0 0 1rem; }
-.pk-figure {
-  background: var(--pk-card);
-  border: 1px solid var(--pk-line);
-  border-radius: 14px;
-  padding: 1.5rem 1rem;
-  margin: 1.5rem 0 2rem;
-  box-shadow: 0 1px 3px rgba(20,40,60,0.04);
-}
-.pk-figure svg { width: 100%; height: auto; display: block; }
-.pk-figcaption {
+
+.model-section p { color: #444; }
+
+/* ── Figure ─────────────────────────────────────────────────── */
+.model-figure {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 24px 0;
+  box-shadow: var(--shadow);
   text-align: center;
-  font-size: 0.85rem;
-  color: var(--pk-muted);
-  margin-top: 0.9rem;
+}
+
+.model-figure img {
+  max-height: 320px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.fig-caption {
+  font-size: 0.83rem;
+  color: var(--muted);
   font-style: italic;
+  margin-top: 12px;
+  margin-bottom: 0 !important;
 }
-.pk-table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
-.pk-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.92rem;
-  background: var(--pk-card);
-  border-radius: 10px;
-  overflow: hidden;
+
+/* ── Equation cards ─────────────────────────────────────────── */
+.eq-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--navy);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 20px;
+  margin: 14px 0;
+  overflow-x: auto;
 }
-.pk-table th {
-  background: var(--pk-central);
-  color: #fff;
-  text-align: left;
-  padding: 0.7rem 0.85rem;
-  font-weight: 600;
-  font-size: 0.82rem;
-  letter-spacing: 0.02em;
-}
-.pk-table td {
-  padding: 0.65rem 0.85rem;
-  border-bottom: 1px solid var(--pk-line);
-  vertical-align: top;
-}
-.pk-table tr:nth-child(even) td { background: #F7FAFC; }
-.pk-table tr:last-child td { border-bottom: none; }
-.pk-sym { font-family: "Cambria Math", Georgia, serif; font-style: italic; white-space: nowrap; }
-.pk-eqcard {
-  background: var(--pk-card);
-  border: 1px solid var(--pk-line);
-  border-left: 4px solid var(--pk-central);
-  border-radius: 10px;
-  padding: 1.1rem 1.3rem;
-  margin: 1.1rem 0;
-}
-.pk-eqcard .pk-eqlabel {
-  font-size: 0.74rem;
+
+.eq-card--central { border-left-color: #1a5276; }
+.eq-card--peripheral { border-left-color: #0e6655; }
+
+.eq-label {
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 700;
-  color: var(--pk-central);
-  margin-bottom: 0.6rem;
+  color: var(--muted);
+  margin-bottom: 8px;
 }
-.pk-eqcard .katex-display { margin: 0.4rem 0; }
-.pk-term-table td:first-child {
+
+.eq-card .katex-display { margin: 0.3rem 0; }
+
+/* ── Math symbol styling ────────────────────────────────────── */
+.sym {
   font-family: "Cambria Math", Georgia, serif;
+  font-style: italic;
   white-space: nowrap;
-  width: 1%;
-  font-weight: 500;
 }
-.pk-pill {
+
+/* ── Pills ──────────────────────────────────────────────────── */
+.pill {
   display: inline-block;
-  padding: 0.15em 0.6em;
+  padding: 2px 8px;
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 600;
+  margin-right: 6px;
 }
-.pk-pill-c { background: var(--pk-central-bg); color: var(--pk-central); }
-.pk-pill-p { background: var(--pk-peripheral-bg); color: var(--pk-peripheral); }
-.pk-best { color: var(--pk-peripheral); font-weight: 700; }
-.pk-worst { color: var(--pk-elim); font-weight: 700; }
-.pk-mid { color: #B7950B; font-weight: 700; }
-.pk-callout {
-  background: var(--pk-central-bg);
+.pill-c { background: #eaf2f8; color: #1a5276; }
+.pill-p { background: #e8f6f0; color: #0e6655; }
+
+/* ── Error badges ───────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.badge-red    { background: #fdecea; color: #c0392b; }
+.badge-amber  { background: #fef9e7; color: #b7950b; }
+.badge-green  { background: #eafaf1; color: #1e8449; }
+
+/* ── Method comparison cards ────────────────────────────────── */
+.method-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 28px 0;
+}
+
+.method-card {
+  border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 1rem 1.2rem;
-  margin: 1.25rem 0;
-  font-size: 0.95rem;
-  color: var(--pk-ink);
+  overflow: hidden;
+  background: white;
 }
-.pk-callout strong { color: var(--pk-central); }
-@media (max-width: 560px) {
-  .pk-model { padding: 1.5rem 1rem 2.5rem; }
-  .pk-table { font-size: 0.84rem; }
-  .pk-table th, .pk-table td { padding: 0.5rem 0.6rem; }
+
+.method-card--best {
+  border-color: var(--green);
+  box-shadow: 0 0 0 1px var(--green);
+}
+
+.method-head {
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: white;
+}
+.method-head--euler    { background: #c0392b; }
+.method-head--abm      { background: #b7950b; }
+.method-head--rk4      { background: var(--green); }
+
+.method-body { padding: 14px; }
+.method-body p { font-size: 0.85rem; color: #555; margin-bottom: 10px; }
+
+.method-error {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #c0392b;
+}
+.method-error--amber { color: #b7950b; }
+.method-error--green { color: #1e8449; }
+
+/* ── Citation ───────────────────────────────────────────────── */
+.model-citation {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.model-citation a { color: var(--orange); }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .model-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .model-toc {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 14px;
+    background: var(--gray);
+    border-radius: var(--radius);
+  }
+  .toc-title { width: 100%; margin-bottom: 4px; }
+  .model-toc a { border-left: none; border-bottom: 2px solid transparent; border-radius: 4px; }
+  .model-toc a:hover { border-bottom-color: var(--orange); }
+}
+
+@media (max-width: 640px) {
+  .method-cards { grid-template-columns: 1fr; }
 }

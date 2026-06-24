@@ -5,18 +5,197 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/biokinetix/components/style.css">
   <link rel="stylesheet" href="/biokinetix/pages/analysis.css">
-  <title>BioKinetiX</title>
+  <title>Analysis — BioKinetiX</title>
 </head>
 <body>
   <div id="header"></div>
-  <h1>Hello!<br>This is the Analysis Page</h1>
+  <main>
+
+    <!-- HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-label">Critical Review</span>
+        <h1>Model Analysis</h1>
+        <p>A critical assessment of Fatima et al. (2025): what was inherited from the classical two-compartment model, what the authors actually contributed, and what we propose to extend.</p>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="section-sm">
+      <div class="container">
+        <div class="analysis-intro">
+          <p>Any honest appraisal of a research paper must distinguish between what the authors built from scratch, what they inherited from prior literature, and what they claimed. This analysis works through the Fatima et al. paper at exactly that level of precision.</p>
+          <div class="analysis-verdict">
+            <div class="verdict-item verdict-kept">
+              <div class="verdict-icon">📐</div>
+              <div>
+                <strong>Kept from Classical Model</strong>
+                <span>ODE system, kinetics assumptions, initial conditions, analytical method</span>
+              </div>
+            </div>
+            <div class="verdict-item verdict-new">
+              <div class="verdict-icon">🔬</div>
+              <div>
+                <strong>Novel Contribution</strong>
+                <span>Specific parameter set, three-method comparison, error quantification</span>
+              </div>
+            </div>
+            <div class="verdict-item verdict-extend">
+              <div class="verdict-icon">🚀</div>
+              <div>
+                <strong>Our Extensions</strong>
+                <span>Proposed modifications to adapt the model for real clinical use</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PART 1: WHAT THEY KEPT -->
+    <section class="section">
+      <div class="container">
+        <span class="section-label">Part 1</span>
+        <h2 class="section-title">What the Authors Retained from the Classical Model</h2>
+        <p style="max-width: 680px; color: var(--muted); margin-bottom: 40px;">The ODE system presented in equations 3 through 6 of the paper is the standard mammillary open two-compartment pharmacokinetic model, transcribed without alteration from the classical literature.</p>
+
+        <div class="analysis-grid">
+          <div class="analysis-block">
+            <div class="block-tag block-tag--inherited">Inherited unchanged</div>
+            <h3>The ODE System</h3>
+            <p>This model, whose foundational form was established by Gibaldi (1969) and subsequently formalised by Metzler (1971), describes drug kinetics as a pair of coupled first-order linear ODEs governing concentration changes in a central and peripheral compartment. The authors adopted this structure in its entirety, making no changes to the underlying mathematical relationships.</p>
+          </div>
+
+          <div class="analysis-block">
+            <div class="block-tag block-tag--inherited">Inherited unchanged</div>
+            <h3>Elimination from the Central Compartment Only</h3>
+            <p>The assumption that elimination occurs exclusively from the central compartment — represented by the rate constant k₁₀ — is a defining feature of the classical open model, and is carried over unchanged. This is a simplification: in reality, some drugs are also eliminated directly from peripheral tissues, but the classical model omits this.</p>
+          </div>
+
+          <div class="analysis-block">
+            <div class="block-tag block-tag--inherited">Inherited unchanged</div>
+            <h3>Linear First-Order Kinetics</h3>
+            <p>The assumption that the rate of drug transfer between compartments is directly proportional to concentration — linear first-order kinetics — is a foundational simplification of the original model and is retained here without modification. Non-linear (Michaelis–Menten) elimination, which occurs at high drug concentrations, is not modelled.</p>
+          </div>
+
+          <div class="analysis-block">
+            <div class="block-tag block-tag--inherited">Inherited unchanged</div>
+            <h3>IV Bolus Initial Condition</h3>
+            <p>The IV bolus initial condition — placing the entire drug dose into the central compartment at time t = 0 — is the standard entry point for this class of models and is used here without adaptation. Continuous infusion, oral administration, or time-varying dosing protocols are not addressed.</p>
+          </div>
+
+          <div class="analysis-block">
+            <div class="block-tag block-tag--inherited">Inherited unchanged</div>
+            <h3>Analytical Solution Procedure</h3>
+            <p>Writing the ODE system in matrix-vector form, solving the characteristic equation to obtain eigenvalues, deriving eigenvectors, and applying initial conditions to determine particular constants are all textbook procedures for linear systems. The resulting biexponential solution is the classical analytical form for this model, known since the model's original formulation.</p>
+          </div>
+
+          <div class="analysis-block">
+            <div class="block-tag block-tag--inherited">Inherited unchanged</div>
+            <h3>Rate Constants and Notation</h3>
+            <p>The rate constants k₁₀, k₁₂, and k₂₁, and the compartment volumes V₁ and V₂, are the standard notation inherited from the classical pharmacokinetics literature, used here without redefinition. No new parameters are introduced.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PART 2: WHAT THEY CONTRIBUTED -->
+    <section class="section section-alt">
+      <div class="container">
+        <span class="section-label">Part 2</span>
+        <h2 class="section-title">What the Authors Actually Contributed</h2>
+
+        <div class="callout callout-green" style="max-width: 700px; margin-bottom: 40px;">
+          The authors' contribution lies entirely within the domain of <strong>numerical methods comparison</strong> rather than pharmacokinetic modelling. They are transparent about this — using words like "employed," "developed using," and "incorporates," which signal application rather than derivation.
+        </div>
+
+        <div class="contrib-list">
+          <div class="contrib-item">
+            <div class="contrib-num">1</div>
+            <div>
+              <h3>A Specific, Controlled Parameter Set</h3>
+              <p>The authors selected a fixed numerical parameter set — k₁₂ = 0.50 h⁻¹, k₁₀ = 0.05 h⁻¹, k₂₁ = 0.25 h⁻¹, with C<sub>c</sub>(0) = 0 and C<sub>p</sub>(0) = 200 mg/L — to serve as a controlled test case for numerical evaluation. This parameter set is not derived from experimental or clinical data; it is a hypothetical configuration chosen to produce a tractable and illustrative simulation.</p>
+            </div>
+          </div>
+
+          <div class="contrib-item">
+            <div class="contrib-num">2</div>
+            <div>
+              <h3>Implementation of Three Numerical Solvers</h3>
+              <p>The authors implemented three widely-known numerical solvers — the Euler method, the fourth-order Runge–Kutta method, and the Adams–Bashforth–Moulton predictor-corrector method — and applied each to simulate drug concentration profiles over a ten-hour window. This implementation and comparison on this specific pharmacokinetic system is the paper's core methodological act.</p>
+            </div>
+          </div>
+
+          <div class="contrib-item">
+            <div class="contrib-num">3</div>
+            <div>
+              <h3>Quantified Error Comparison and Ranking</h3>
+              <p>The outcome of comparing all three numerical outputs against the exact analytical solution — RK4 at 1.54%, ABM at 7.66%, Euler at 28.62% — constitutes the paper's primary finding. This gives practitioners a quantitative basis for selecting an appropriate numerical solver when exact analytical solutions are unavailable or computationally inconvenient.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top: 40px;">
+          <strong>Overall Assessment:</strong> The paper makes no substantive modification to the pharmacokinetic model itself. The classical mammillary open two-compartment model, as established over fifty years ago, is the sole pharmacokinetic framework used. The authors' work sits entirely within the computational and numerical layer built on top of it.
+        </div>
+      </div>
+    </section>
+
+    <!-- PART 3: OUR EXTENSIONS -->
+    <section class="section">
+      <div class="container">
+        <span class="section-label">Part 3</span>
+        <h2 class="section-title">What We Propose to Extend</h2>
+        <p style="max-width: 680px; color: var(--muted); margin-bottom: 40px;">Building on the foundation laid by the paper, our team identified several directions in which the model could be made more clinically relevant — particularly for the sepsis treatment context described in our project framing.</p>
+
+        <div class="extension-cards">
+          <div class="ext-card">
+            <div class="ext-icon">💊</div>
+            <h3>Non-Linear Elimination (Michaelis–Menten Kinetics)</h3>
+            <p>The current model assumes first-order elimination — that the rate of drug removal is always proportional to concentration. In reality, at high drug concentrations, the eliminating enzymes become saturated and elimination rate plateaus. Adding Michaelis–Menten kinetics to k₁₀ would better represent drugs like gentamicin at high doses.</p>
+            <div class="ext-tag">Pharmacokinetic extension</div>
+          </div>
+
+          <div class="ext-card">
+            <div class="ext-icon">🔄</div>
+            <h3>Repeated Dosing and Accumulation</h3>
+            <p>The current model simulates a single IV bolus. Clinical dosing requires repeated doses — often every 8, 12, or 24 hours. Extending the model to simulate multiple dosing events would allow prediction of drug accumulation and steady-state concentrations, which is directly relevant to therapeutic drug monitoring.</p>
+            <div class="ext-tag">Clinical applicability</div>
+          </div>
+
+          <div class="ext-card">
+            <div class="ext-icon">🧪</div>
+            <h3>Patient-Specific Parameter Estimation</h3>
+            <p>The paper uses a fixed hypothetical parameter set. A clinically useful tool would allow patient-specific k values to be fitted to measured plasma concentrations. Incorporating a simple least-squares fitting routine would let the model adapt to individual patients — the core goal of personalised dosing.</p>
+            <div class="ext-tag">Personalised medicine</div>
+          </div>
+
+          <div class="ext-card">
+            <div class="ext-icon">🫁</div>
+            <h3>Sepsis-Induced Physiological Changes</h3>
+            <p>Critically ill sepsis patients exhibit altered pharmacokinetics: expanded volume of distribution due to fluid resuscitation, impaired renal clearance reducing k₁₀, and altered protein binding. Introducing time-varying or condition-dependent rate constants would capture this — making the model more realistic for the clinical setting this project targets.</p>
+            <div class="ext-tag">Sepsis adaptation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REFERENCE -->
+    <section class="section-sm section-alt">
+      <div class="container">
+        <p style="font-size: 0.84rem; color: var(--muted);">
+          Analysis based on: Fatima K, Ali B, Khan AA, Ahmed S, Ateya AA, Ahmad N. <em>A Comparative Analysis of Numerical Methods for Mathematical Modelling of Intravascular Drug Concentrations Using a Two-Compartment Pharmacokinetic Model.</em> Math. Comput. Appl. 2025, 30, 70. <a href="https://doi.org/10.3390/mca30040070" target="_blank">doi.org/10.3390/mca30040070</a>. Original two-compartment model: Gibaldi (1969); Metzler (1971).
+        </p>
+      </div>
+    </section>
+
+  </main>
   <div id="footer"></div>
 
   <script type="module">
     import Header from '/biokinetix/components/header.js';
     import Footer from '/biokinetix/components/footer.js';
-
-    document.getElementById('header').innerHTML = Header();
+    document.getElementById('header').innerHTML = Header('analysis');
     document.getElementById('footer').innerHTML = Footer();
   </script>
 </body>

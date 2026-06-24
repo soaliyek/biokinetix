@@ -1,0 +1,158 @@
+/* ================================================================
+   Team Page Styles — BioKinetiX
+   ================================================================ */
+
+.page-hero h1 { color: white; }
+
+/* ── Intro ──────────────────────────────────────────────────── */
+.team-intro {
+  max-width: 720px;
+  margin-bottom: 52px;
+}
+.team-intro p { color: #444; }
+
+/* ── Team Grid ──────────────────────────────────────────────── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+/* ── Team Card ──────────────────────────────────────────────── */
+.team-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+/* ── Photo ──────────────────────────────────────────────────── */
+.team-photo {
+  height: 180px;
+  background: linear-gradient(135deg, var(--navy) 0%, #2d2d5e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  border: 2px solid rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-initials {
+  color: rgba(255,255,255,0.6);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* ── Info Section ───────────────────────────────────────────── */
+.team-info {
+  padding: 20px 22px 22px;
+  flex: 1;
+}
+
+.team-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.team-year,
+.team-major {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.team-dot {
+  color: var(--border);
+  margin: 0 4px;
+  font-size: 0.82rem;
+}
+
+.team-major {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+.team-interest,
+.team-contribution {
+  font-size: 0.875rem;
+  color: #444;
+  margin-top: 12px;
+  margin-bottom: 0;
+  line-height: 1.55;
+}
+
+.team-interest strong,
+.team-contribution strong {
+  color: var(--navy);
+}
+
+/* ── Course Banner ──────────────────────────────────────────── */
+.course-banner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+}
+
+.course-banner p { color: #555; }
+
+.course-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 200px;
+}
+
+.meta-item {}
+.meta-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+.meta-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .course-banner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .course-meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}

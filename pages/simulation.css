@@ -1,0 +1,133 @@
+/* ================================================================
+   Simulation Page Styles — BioKinetiX
+   ================================================================ */
+
+.page-hero h1 { color: white; }
+
+/* ── Intro layout ───────────────────────────────────────────── */
+.sim-intro {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+  align-items: start;
+  padding: 32px 0;
+}
+.sim-intro p { color: #444; }
+
+/* ── Param box ──────────────────────────────────────────────── */
+.sim-params {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 22px 24px;
+  color: white;
+}
+.sim-params h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--green);
+  margin-bottom: 16px;
+}
+.param-grid { display: flex; flex-direction: column; gap: 8px; }
+.param-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.param-item:last-child { border-bottom: none; }
+.param-sym {
+  font-family: "Cambria Math", Georgia, serif;
+  font-style: italic;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+}
+.param-val {
+  font-weight: 700;
+  color: var(--orange);
+  font-size: 0.9rem;
+}
+
+/* ── 2×2 figure grid ────────────────────────────────────────── */
+.fig-grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.fig-grid-1x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+/* ── Figure containers ──────────────────────────────────────── */
+.sim-figure {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.sim-fig-label {
+  padding: 9px 16px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: white;
+}
+.sim-fig-label--exact      { background: var(--navy); }
+.sim-fig-label--euler      { background: #c0392b; }
+.sim-fig-label--rk4        { background: #1e8449; }
+.sim-fig-label--abm        { background: #b7950b; }
+
+.sim-figure .img-placeholder {
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px dashed var(--border);
+  background: #fafafa;
+}
+
+.ph-icon { font-size: 2rem; }
+
+.sim-fig-caption {
+  font-size: 0.82rem;
+  color: var(--muted);
+  padding: 12px 16px;
+  line-height: 1.5;
+  font-style: italic;
+  margin: 0;
+}
+
+.sim-fig-title {
+  padding: 14px 16px 0;
+  font-size: 0.95rem;
+  color: var(--navy);
+}
+
+/* ── Single figure ──────────────────────────────────────────── */
+.fig-single {}
+
+/* ── Badge (reused from model) ──────────────────────────────── */
+.badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; }
+.badge-red   { background: #fdecea; color: #c0392b; }
+.badge-amber { background: #fef9e7; color: #b7950b; }
+.badge-green { background: #eafaf1; color: #1e8449; }
+
+/* ── Code/inline ────────────────────────────────────────────── */
+code {
+  font-family: 'Courier New', monospace;
+  background: var(--gray);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.88em;
+  color: var(--navy);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .sim-intro { grid-template-columns: 1fr; gap: 28px; }
+  .fig-grid-2x2 { grid-template-columns: 1fr; }
+  .fig-grid-1x2 { grid-template-columns: 1fr; }
+}
