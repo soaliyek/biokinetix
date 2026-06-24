@@ -39,8 +39,8 @@ export default function Header(activePage = '') {
   return `
     <header>
       <a href="/biokinetix/index.html" class="logo">
-        <img src="/biokinetix/assets/biokinetix_small_nbg.png" alt="BioKinetiX logo" onerror="this.style.display='none'">
-        <span class="logo-text">BioKinetiX</span>
+        <img src="/biokinetix/assets/biokinetix_big_nbg.png" alt="BioKinetiX logo" onerror="this.style.display='none'">
+        <h1 class="logo-text">BioKinetiX</h1>
       </a>
       <nav>
         ${navHTML}
