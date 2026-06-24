@@ -54,7 +54,7 @@ p  { margin-bottom: 1rem; }
 p:last-child { margin-bottom: 0; }
 
 /* ── HEADER ───────────────────────────────────────────────────── */
-header {
+/* header {
   background: #fff;
   height: 64px;
   display: flex;
@@ -109,7 +109,7 @@ nav a.active {
   color: var(--orange);
   border-bottom: 2px solid var(--orange);
   border-radius: 0;
-}
+} */
 
 /* ── FOOTER ───────────────────────────────────────────────────── */
 footer {

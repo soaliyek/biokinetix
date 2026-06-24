@@ -1,9 +1,20 @@
 
-export default function Footer(){
-    return `
+export default function Footer() {
+  const year = new Date().getFullYear();
+  return `
     <footer>
-        <p>BioKinetiX Team</p>
-        <p>&copy; Copyright 2026</p>
+      <div>
+        <p class="footer-brand">BioKinetiX</p>
+        <p>Differential Equations Project &mdash; Ashesi University</p>
+      </div>
+      <div class="footer-links">
+        <a href="/biokinetix/pages/about.html">About</a>
+        <a href="/biokinetix/pages/model.html">Model</a>
+        <a href="/biokinetix/pages/simulation.html">Simulation</a>
+        <a href="/biokinetix/pages/analysis.html">Analysis</a>
+        <a href="/biokinetix/pages/team.html">Team</a>
+      </div>
+      <p>&copy; ${year} BioKinetiX Group</p>
     </footer>
-    `;
+  `;
 }
