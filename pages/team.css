@@ -1,8 +1,13 @@
 /* ================================================================
    Team Page Styles — BioKinetiX
    ================================================================ */
+main{
+    max-width: 1000px;
+    margin: auto;
+}
+  
 
-.page-hero h1 { color: white; }
+.page-hero h1 { color: var(--green); }
 
 /* ── Intro ──────────────────────────────────────────────────── */
 .team-intro {
@@ -37,7 +42,7 @@
 
 /* ── Photo ──────────────────────────────────────────────────── */
 .team-photo {
-  height: 180px;
+  height: 220px;
   background: linear-gradient(135deg, var(--navy) 0%, #2d2d5e 100%);
   display: flex;
   align-items: center;
@@ -47,27 +52,10 @@
 
 .team-photo img {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   object-fit: cover;
 }
 
-.photo-placeholder {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.12);
-  border: 2px solid rgba(255,255,255,0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.photo-initials {
-  color: rgba(255,255,255,0.6);
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
 
 /* ── Info Section ───────────────────────────────────────────── */
 .team-info {
@@ -113,36 +101,6 @@
   color: var(--navy);
 }
 
-/* ── Course Banner ──────────────────────────────────────────── */
-.course-banner {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 40px;
-  align-items: center;
-}
-
-.course-banner p { color: #555; }
-
-.course-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  min-width: 200px;
-}
-
-.meta-item {}
-.meta-label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--muted);
-  margin-bottom: 2px;
-}
-.meta-value {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--navy);
-}
 
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 768px) {

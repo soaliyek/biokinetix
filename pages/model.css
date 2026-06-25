@@ -1,8 +1,12 @@
 /* ================================================================
    Model Page Styles — BioKinetiX
    ================================================================ */
+main{
+    max-width: 1000px;
+    margin: auto;
+}
 
-.page-hero h1 { color: white; }
+.page-hero h1 { color: #386851; }
 
 /* ── Two-column layout ──────────────────────────────────────── */
 .model-layout {
@@ -110,22 +114,21 @@
 .eq-card {
   background: white;
   border: 1px solid var(--border);
-  border-left: 4px solid var(--navy);
   border-radius: 0 10px 10px 0;
   padding: 16px 20px;
   margin: 14px 0;
   overflow-x: auto;
 }
 
-.eq-card--central { border-left-color: #1a5276; }
-.eq-card--peripheral { border-left-color: #0e6655; }
+.eq-card--central { background-color: var(--orange);}
+.eq-card--peripheral { background-color: var(--green);}
 
 .eq-label {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 700;
-  color: var(--muted);
+  color: white;
   margin-bottom: 8px;
 }
 
@@ -151,16 +154,18 @@
 .pill-p { background: #e8f6f0; color: #0e6655; }
 
 /* ── Error badges ───────────────────────────────────────────── */
-.badge {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  font-weight: 700;
+
+table{
+  background-color: #b7950b;
+  width: 100%;
+  padding: 10px;
 }
-.badge-red    { background: #fdecea; color: #c0392b; }
-.badge-amber  { background: #fef9e7; color: #b7950b; }
-.badge-green  { background: #eafaf1; color: #1e8449; }
+
+table thead tr th{
+  background-color: #c0392b;
+  align-content: start;
+}
+
 
 /* ── Method comparison cards ────────────────────────────────── */
 .method-cards {
@@ -172,7 +177,7 @@
 
 .method-card {
   border: 1px solid var(--border);
-  border-radius: 10px;
+  /* border-radius: 10px; */
   overflow: hidden;
   background: white;
 }

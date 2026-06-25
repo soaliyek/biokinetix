@@ -2,21 +2,35 @@
    Simulation Page Styles — BioKinetiX
    ================================================================ */
 
-.page-hero h1 { color: white; }
+main{
+    max-width: 1000px;
+    margin: auto;
+}
+  
+.page-hero h1 { color: #ff751f; }
 
 /* ── Intro layout ───────────────────────────────────────────── */
+
+.section-sm{
+  background-color: #1e8449;
+}
+.section-sm .container{
+  padding: 10px;
+}
+
 .sim-intro {
   display: grid;
   grid-template-columns: 1fr 300px;
   gap: 48px;
   align-items: start;
-  padding: 32px 0;
+  /* padding: 32px 0; */
+
 }
-.sim-intro p { color: #444; }
+.sim-intro p { color: #000000; }
 
 /* ── Param box ──────────────────────────────────────────────── */
 .sim-params {
-  background: var(--navy);
+  background: white;
   border-radius: 12px;
   padding: 22px 24px;
   color: white;
@@ -25,7 +39,7 @@
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--green);
+  color: var(--orange);
   margin-bottom: 16px;
 }
 .param-grid { display: flex; flex-direction: column; gap: 8px; }
@@ -40,7 +54,7 @@
 .param-sym {
   font-family: "Cambria Math", Georgia, serif;
   font-style: italic;
-  color: rgba(255,255,255,0.7);
+  color: #1e8449;
   font-size: 0.95rem;
 }
 .param-val {
@@ -57,63 +71,49 @@
 }
 
 .fig-grid-1x2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ── Figure containers ──────────────────────────────────────── */
-.sim-figure {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
+/*----------- FIGURE 2 & 3*/
+.section .container .fig-grid-1x2{
+  width: 100%;
 }
 
-.sim-fig-label {
-  padding: 9px 16px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: white;
-}
-.sim-fig-label--exact      { background: var(--navy); }
-.sim-fig-label--euler      { background: #c0392b; }
-.sim-fig-label--rk4        { background: #1e8449; }
-.sim-fig-label--abm        { background: #b7950b; }
-
-.sim-figure .img-placeholder {
-  border-radius: 0;
-  border: none;
-  border-bottom: 1px dashed var(--border);
-  background: #fafafa;
+.section .container .fig-grid-1x2 .sim-figure img{
+  width: 100%;
 }
 
-.ph-icon { font-size: 2rem; }
 
-.sim-fig-caption {
-  font-size: 0.82rem;
-  color: var(--muted);
-  padding: 12px 16px;
-  line-height: 1.5;
-  font-style: italic;
-  margin: 0;
+/*------------ FIGURE 4*/
+.section-alt{
+  background-color: #1e8449;
+  padding: 10px;
 }
 
-.sim-fig-title {
-  padding: 14px 16px 0;
-  font-size: 0.95rem;
-  color: var(--navy);
+.section-alt .container{
+  background-color: #1e8449;
+}
+
+.section-alt .container img{
+  width: 100%;
+}
+
+table{
+  background-color: #b7950b;
+  width: 100%;
+  padding: 10px;
+}
+
+table thead tr th{
+  background-color: #c0392b;
+  align-content: start;
 }
 
 /* ── Single figure ──────────────────────────────────────────── */
-.fig-single {}
 
-/* ── Badge (reused from model) ──────────────────────────────── */
-.badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; }
-.badge-red   { background: #fdecea; color: #c0392b; }
-.badge-amber { background: #fef9e7; color: #b7950b; }
-.badge-green { background: #eafaf1; color: #1e8449; }
+
 
 /* ── Code/inline ────────────────────────────────────────────── */
 code {

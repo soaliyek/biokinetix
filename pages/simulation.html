@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/biokinetix/components/style.css">
-  <link rel="stylesheet" href="/biokinetix/pages/simulation.css">
+  <link rel="stylesheet" href="../components/style.css">
+  <link rel="stylesheet" href="simulation.css">
   <title>Simulation — BioKinetiX</title>
 </head>
 <body>
@@ -14,9 +14,9 @@
     <!-- HERO -->
     <section class="page-hero">
       <div class="container">
-        <span class="section-label">Graph Replication</span>
+        <!-- <span class="section-label">Graph Replication</span> -->
         <h1>MATLAB Simulation</h1>
-        <p>Replicating the figures from Fatima et al. (2025) — drug concentration profiles and error comparisons across three numerical methods.</p>
+        <p>Replicating the figures from Fatima et al. (2025): drug concentration profiles and error comparisons across three numerical methods.</p>
       </div>
     </section>
 
@@ -25,7 +25,7 @@
       <div class="container">
         <div class="sim-intro">
           <div>
-            <h2>Reproducing the Paper's Results</h2>
+            <h2 style="color: white;">Reproducing the Paper's Results</h2>
             <p>Using MATLAB R2026a, we independently reproduced the simulation results from the original research paper. The same parameter set and initial conditions were applied: k<sub>10</sub> = 0.05 h⁻¹, k<sub>12</sub> = 0.50 h⁻¹, k<sub>21</sub> = 0.25 h⁻¹, with C<sub>c</sub>(0) = 0 and C<sub>p</sub>(0) = 200 mg/L, over a 10-hour simulation window at step size Δt = 0.1 h.</p>
             <p>All three numerical methods were implemented from scratch alongside the analytical solution, and results were validated against Tables 1–5 from the paper.</p>
           </div>
@@ -48,47 +48,12 @@
     <!-- FIGURE 1: CONCENTRATION PROFILES -->
     <section class="section section-alt">
       <div class="container">
-        <span class="section-label">Figure 1 Replication</span>
-        <h2 class="section-title">Drug Concentration Profiles (2×2 Panel)</h2>
+        <!-- <span class="section-label">Figure 1 Replication</span> -->
+        <h2 class="section-title">Figure1: Drug Concentration Profiles</h2>
         <p class="section-subtitle">Each subplot shows the central compartment (left axis, blue) and peripheral compartment (right axis, red) over 10 hours.</p>
 
         <div class="fig-grid-2x2">
-          <div class="sim-figure">
-            <div class="sim-fig-label sim-fig-label--exact">(a) Exact (Analytical) Solution</div>
-            <div class="img-placeholder" style="height: 260px;">
-              <span class="ph-icon">📈</span>
-              <strong>Figure 1a</strong>
-              <span>Exact Solution — insert MATLAB output</span>
-            </div>
-            <p class="sim-fig-caption">The bi-exponential analytical solution. C<sub>c</sub> rises then declines; C<sub>p</sub> decreases monotonically from 200 mg/L.</p>
-          </div>
-          <div class="sim-figure">
-            <div class="sim-fig-label sim-fig-label--euler">(b) Euler Method</div>
-            <div class="img-placeholder" style="height: 260px;">
-              <span class="ph-icon">📈</span>
-              <strong>Figure 1b</strong>
-              <span>Euler Method — insert MATLAB output</span>
-            </div>
-            <p class="sim-fig-caption">Euler method shows visible deviation from the exact solution, particularly during the rapid early distribution phase (hours 0–3).</p>
-          </div>
-          <div class="sim-figure">
-            <div class="sim-fig-label sim-fig-label--rk4">(c) 4th-Order Runge–Kutta</div>
-            <div class="img-placeholder" style="height: 260px;">
-              <span class="ph-icon">📈</span>
-              <strong>Figure 1c</strong>
-              <span>RK4 — insert MATLAB output</span>
-            </div>
-            <p class="sim-fig-caption">RK4 curves are visually indistinguishable from the exact solution at this scale — confirming its 1.54% overall error.</p>
-          </div>
-          <div class="sim-figure">
-            <div class="sim-fig-label sim-fig-label--abm">(d) Adams–Bashforth–Moulton</div>
-            <div class="img-placeholder" style="height: 260px;">
-              <span class="ph-icon">📈</span>
-              <strong>Figure 1d</strong>
-              <span>ABM — insert MATLAB output</span>
-            </div>
-            <p class="sim-fig-caption">ABM performs between Euler and RK4 — moderate early deviation that converges with the exact solution over time.</p>
-          </div>
+          <img src="../assets/solution_exact.png" alt="" srcset="">
         </div>
       </div>
     </section>
@@ -96,28 +61,18 @@
     <!-- FIGURE 2 & 3: ERROR PLOTS -->
     <section class="section">
       <div class="container">
-        <span class="section-label">Figures 2–3 Replication</span>
+        <!-- <span class="section-label">Figures 2–3 Replication</span> -->
         <h2 class="section-title">Absolute Error Over Time</h2>
         <p class="section-subtitle">Absolute error at each integer hour (t = 0 to 10) comparing all three numerical methods against the analytical solution.</p>
 
         <div class="fig-grid-1x2">
           <div class="sim-figure">
-            <h3 class="sim-fig-title">Central Compartment Error (Figure 2)</h3>
-            <div class="img-placeholder" style="height: 300px;">
-              <span class="ph-icon">📉</span>
-              <strong>Figure 2</strong>
-              <span>Central compartment error comparison — insert MATLAB output</span>
-            </div>
-            <p class="sim-fig-caption">Euler error peaks near hour 1–2, then declines. RK4 and ABM errors remain near zero, with RK4 consistently lowest throughout.</p>
+            <h3 class="sim-fig-title">Figure2: Central Compartment Error</h3>
+            <img src="../assets/error_central.png" alt="" srcset="">
           </div>
           <div class="sim-figure">
-            <h3 class="sim-fig-title">Peripheral Compartment Error (Figure 3)</h3>
-            <div class="img-placeholder" style="height: 300px;">
-              <span class="ph-icon">📉</span>
-              <strong>Figure 3</strong>
-              <span>Peripheral compartment error comparison — insert MATLAB output</span>
-            </div>
-            <p class="sim-fig-caption">A similar pattern — Euler error is large early and diminishes; ABM error initially higher but converges; RK4 remains near zero.</p>
+            <h3 class="sim-fig-title">Figure3: Peripheral Compartment Error</h3>
+            <img src="../assets/error_periferal.png" alt="" srcset="">
           </div>
         </div>
       </div>
@@ -126,54 +81,46 @@
     <!-- FIGURE 4: AVERAGE ERROR BAR -->
     <section class="section section-alt">
       <div class="container">
-        <span class="section-label">Figure 4 Replication</span>
-        <h2 class="section-title">Average Error by Method (Figure 4)</h2>
-        <div class="fig-single">
-          <div class="img-placeholder" style="height: 340px; max-width: 640px; margin: 0 auto;">
-            <span class="ph-icon">📊</span>
-            <strong>Figure 4</strong>
-            <span>Average error bar chart — insert MATLAB output</span>
-          </div>
-          <p class="sim-fig-caption" style="text-align: center; max-width: 560px; margin: 16px auto 0;">Grouped bar chart showing average absolute error for the central and peripheral compartments across all three methods. RK4 bars are visually negligible.</p>
-        </div>
+        <!-- <span class="section-label">Figure 4 Replication</span> -->
+        <h2 class="section-title">Figure4: Average Error by Method</h2>
+        <img src="../assets/error_avg.png" alt="" srcset="">
 
         <!-- Summary table -->
-        <div class="table-wrap" style="margin-top: 40px; max-width: 680px;">
+        <div class="table-wrap" style="margin-top: 40px;">
           <table>
             <thead>
               <tr><th>Method</th><th>Central Avg.</th><th>Peripheral Avg.</th><th>Overall Average</th><th>Overall (%)</th></tr>
             </thead>
             <tbody>
-              <tr><td>Euler Method</td><td>0.2771</td><td>0.2953</td><td>0.2862</td><td><span class="badge badge-red">28.62%</span></td></tr>
-              <tr><td>Adams–Bashforth–Moulton</td><td>0.0663</td><td>0.0868</td><td>0.0766</td><td><span class="badge badge-amber">7.66%</span></td></tr>
-              <tr><td><strong>4th-Order Runge–Kutta</strong></td><td>0.0086</td><td>0.0221</td><td>0.0154</td><td><span class="badge badge-green">1.54%</span></td></tr>
+              <tr><td>Euler Method</td><td>0.2771</td><td>0.2953</td><td>0.2862</td><td><span >28.62%</span></td></tr>
+              <tr><td>Adams–Bashforth–Moulton</td><td>0.0663</td><td>0.0868</td><td>0.0766</td><td><span >7.66%</span></td></tr>
+              <tr><td><strong>4th-Order Runge–Kutta</strong></td><td>0.0086</td><td>0.0221</td><td>0.0154</td><td><span >1.54%</span></td></tr>
             </tbody>
           </table>
         </div>
-        <p style="font-size:0.82rem; color: var(--muted); margin-top: 8px;">Table 5 from Fatima et al. (2025), reproduced via our MATLAB implementation.</p>
       </div>
     </section>
 
     <!-- MATLAB CODE -->
     <section class="section">
       <div class="container">
-        <span class="section-label">Implementation</span>
+        <!-- <span class="section-label">Implementation</span> -->
         <h2 class="section-title">MATLAB Code Overview</h2>
         <p style="max-width: 680px; color: var(--muted); margin-bottom: 36px;">The complete MATLAB script implements the exact analytical solution via eigendecomposition, then runs all three numerical methods independently, computes error vectors, and generates all four figure panels. Key implementation steps:</p>
 
         <div class="grid-3">
           <div class="card">
-            <div class="card-icon">🔢</div>
+            <!-- <div class="card-icon">🔢</div> -->
             <h3>Analytical Solution</h3>
             <p>The matrix <strong>A</strong> is passed to MATLAB's <code>eig()</code> function to obtain eigenvalues and eigenvectors. Coefficients are solved from initial conditions using <code>V \ [Cc0; Cp0]</code>.</p>
           </div>
           <div class="card">
-            <div class="card-icon">⚙️</div>
+            <!-- <div class="card-icon">⚙️</div> -->
             <h3>Numerical Methods</h3>
             <p>Each method is implemented as a forward loop over the time vector. RK4 computes four intermediate slope estimates per step; ABM bootstraps its first four values with RK4.</p>
           </div>
           <div class="card">
-            <div class="card-icon">📐</div>
+            <!-- <div class="card-icon">📐</div> -->
             <h3>Error Analysis</h3>
             <p>Absolute errors are computed at every step (<code>abs(numerical - exact)</code>). Integer-hour values are sampled to match the paper's tables. Average errors are computed over all time points.</p>
           </div>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/biokinetix/components/style.css">
-  <link rel="stylesheet" href="/biokinetix/pages/model.css">
+  <link rel="stylesheet" href="../components/style.css">
+  <link rel="stylesheet" href="model.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
   <title>Model — BioKinetiX</title>
 </head>
@@ -15,9 +15,9 @@
     <!-- HERO -->
     <section class="page-hero">
       <div class="container">
-        <span class="section-label">Mathematical Model</span>
+        <!-- <span class="section-label">Mathematical Model</span> -->
         <h1>Two-Compartment<br>Pharmacokinetic Model</h1>
-        <p>A mathematical description of how an intravenously administered drug distributes between the bloodstream and body tissues — governed by a coupled system of first-order differential equations.</p>
+        <p>A mathematical description of how an intravenously administered drug distributes between the bloodstream and body tissues, governed by a coupled system of first-order differential equations.</p>
       </div>
     </section>
 
@@ -45,12 +45,8 @@
               <p>The body is divided into two connected compartments. The <strong>central compartment</strong> represents blood plasma and highly perfused organs (heart, liver, lungs, kidneys). The <strong>peripheral compartment</strong> represents slowly perfused tissues such as muscle and fat. A single intravenous (IV) bolus dose enters the central compartment at time <em>t = 0</em>, from which the drug distributes to the periphery and is eliminated from the body.</p>
 
               <div class="model-figure">
-                <img src="/biokinetix/assets/compartment_diag_main.png" alt="Two-compartment model diagram showing central and peripheral compartments with rate constants k12, k21, and k10">
-                <p class="fig-caption">Figure 1. Schematic of the two-compartment open pharmacokinetic model. The drug enters the central compartment via IV bolus and distributes bidirectionally to the peripheral compartment while undergoing irreversible elimination.</p>
-              </div>
-
-              <div class="model-figure" style="margin-top: 16px;">
-                <img src="/biokinetix/assets/compartment_diag_0.png" alt="Simplified compartment diagram">
+                <img src="../assets/compartment_diag_main.png" alt="Two-compartment model diagram showing central and peripheral compartments with rate constants k12, k21, and k10">
+                <p class="fig-caption">Figure 1. Compartmental Model</p>
               </div>
             </div>
 
@@ -68,7 +64,7 @@
                     <tr><td>Peripheral concentration</td><td class="sym">C<sub>p</sub>(t)</td><td>mg/L</td><td>Drug concentration in slowly perfused tissues</td></tr>
                     <tr><td>Central amount</td><td class="sym">A<sub>c</sub>(t)</td><td>mg</td><td>Mass of drug in the central compartment (A<sub>c</sub> = C<sub>c</sub> × V<sub>1</sub>)</td></tr>
                     <tr><td>Peripheral amount</td><td class="sym">A<sub>p</sub>(t)</td><td>mg</td><td>Mass of drug in the peripheral compartment (A<sub>p</sub> = C<sub>p</sub> × V<sub>2</sub>)</td></tr>
-                    <tr><td>Time</td><td class="sym">t</td><td>hours</td><td>Independent variable — time since dose administration</td></tr>
+                    <tr><td>Time</td><td class="sym">t</td><td>hours</td><td>Independent variable (time since dose administration)</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -93,7 +89,7 @@
                 </table>
               </div>
               <div class="callout">
-                <strong>Initial conditions.</strong> At <em>t = 0</em>: &nbsp; C<sub>c</sub>(0) = 0 mg/L &nbsp;and&nbsp; C<sub>p</sub>(0) = 200 mg/L. The entire dose begins in the peripheral compartment — representing the moment of IV bolus injection into the systemic circulation.
+                <strong>Initial conditions.</strong> At <em>t = 0</em>: &nbsp; C<sub>c</sub>(0) = 0 mg/L &nbsp;and&nbsp; C<sub>p</sub>(0) = 200 mg/L. The entire dose begins in the peripheral compartment, representing the moment of IV bolus injection into the systemic circulation.
               </div>
             </div>
 
@@ -104,7 +100,7 @@
               <h3>Amount–concentration relationship</h3>
               <p>The total amount of drug in each compartment relates to its concentration and the volume of that compartment:</p>
               <div class="eq-card">
-                <div class="eq-label">Equations 1–2</div>
+                <div class="eq-label" style="color: var(--orange);">Equations 1–2</div>
                 <div data-katex>A_c(t) = C_c(t)\cdot V_1 \qquad\qquad A_p(t) = C_p(t)\cdot V_2</div>
               </div>
 
@@ -146,7 +142,7 @@
               <h2><span class="sec-num">05</span> Analytical (Exact) Solution</h2>
               <p>Solving the eigenvalue problem of <strong>A</strong> yields two eigenvalues corresponding to a fast distributive phase (large negative λ) and a slow terminal elimination phase (small negative λ):</p>
               <div class="eq-card">
-                <div class="eq-label">Characteristic equation & eigenvalues</div>
+                <div class="eq-label" style="color: var(--orange);">Characteristic equation & eigenvalues</div>
                 <div data-katex>\lambda^2 + 0.8\lambda + 0.0125 = 0 \;\Rightarrow\; \lambda_1 = -0.0159,\quad \lambda_2 = -0.7841</div>
               </div>
               <p>Applying the initial conditions C<sub>c</sub>(0) = 0 and C<sub>p</sub>(0) = 200 gives the closed-form biexponential solutions for each compartment:</p>
