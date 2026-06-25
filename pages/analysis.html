@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/biokinetix/components/style.css">
-  <link rel="stylesheet" href="/biokinetix/pages/analysis.css">
+  <link rel="stylesheet" href="../components/style.css">
+  <link rel="stylesheet" href="analysis.css">
   <title>Analysis — BioKinetiX</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
     <!-- HERO -->
     <section class="page-hero">
       <div class="container">
-        <span class="section-label">Critical Review</span>
+        <!-- <span class="section-label">Critical Review</span> -->
         <h1>Model Analysis</h1>
         <p>A critical assessment of Fatima et al. (2025): what was inherited from the classical two-compartment model, what the authors actually contributed, and what we propose to extend.</p>
       </div>
@@ -25,6 +25,7 @@
       <div class="container">
         <div class="analysis-intro">
           <p>Any honest appraisal of a research paper must distinguish between what the authors built from scratch, what they inherited from prior literature, and what they claimed. This analysis works through the Fatima et al. paper at exactly that level of precision.</p>
+          <!--
           <div class="analysis-verdict">
             <div class="verdict-item verdict-kept">
               <div class="verdict-icon">📐</div>
@@ -48,16 +49,17 @@
               </div>
             </div>
           </div>
+          -->
         </div>
       </div>
     </section>
 
     <!-- PART 1: WHAT THEY KEPT -->
-    <section class="section">
+    <section class="section section-green">
       <div class="container">
-        <span class="section-label">Part 1</span>
+        <!-- <span class="section-label">Part 1</span> -->
         <h2 class="section-title">What the Authors Retained from the Classical Model</h2>
-        <p style="max-width: 680px; color: var(--muted); margin-bottom: 40px;">The ODE system presented in equations 3 through 6 of the paper is the standard mammillary open two-compartment pharmacokinetic model, transcribed without alteration from the classical literature.</p>
+        <p style="max-width: 680px; color: var(--muted); color: white; margin-bottom: 40px;">The ODE system presented in equations 3 through 6 of the paper is the standard mammillary open two-compartment pharmacokinetic model, transcribed without alteration from the classical literature.</p>
 
         <div class="analysis-grid">
           <div class="analysis-block">
@@ -102,7 +104,7 @@
     <!-- PART 2: WHAT THEY CONTRIBUTED -->
     <section class="section section-alt">
       <div class="container">
-        <span class="section-label">Part 2</span>
+        <!-- <span class="section-label">Part 2</span> -->
         <h2 class="section-title">What the Authors Actually Contributed</h2>
 
         <div class="callout callout-green" style="max-width: 700px; margin-bottom: 40px;">
@@ -142,36 +144,32 @@
     </section>
 
     <!-- PART 3: OUR EXTENSIONS -->
-    <section class="section">
+    <section class="section section-green">
       <div class="container">
-        <span class="section-label">Part 3</span>
+        <!-- <span class="section-label">Part 3</span> -->
         <h2 class="section-title">What We Propose to Extend</h2>
-        <p style="max-width: 680px; color: var(--muted); margin-bottom: 40px;">Building on the foundation laid by the paper, our team identified several directions in which the model could be made more clinically relevant — particularly for the sepsis treatment context described in our project framing.</p>
+        <p style="max-width: 680px; color: var(--muted); color: white; margin-bottom: 40px;">Building on the foundation laid by the paper, our team identified several directions in which the model could be made more clinically relevant, particularly for the sepsis treatment context described in our project framing.</p>
 
         <div class="extension-cards">
           <div class="ext-card">
-            <div class="ext-icon">💊</div>
             <h3>Non-Linear Elimination (Michaelis–Menten Kinetics)</h3>
             <p>The current model assumes first-order elimination — that the rate of drug removal is always proportional to concentration. In reality, at high drug concentrations, the eliminating enzymes become saturated and elimination rate plateaus. Adding Michaelis–Menten kinetics to k₁₀ would better represent drugs like gentamicin at high doses.</p>
             <div class="ext-tag">Pharmacokinetic extension</div>
           </div>
 
           <div class="ext-card">
-            <div class="ext-icon">🔄</div>
             <h3>Repeated Dosing and Accumulation</h3>
             <p>The current model simulates a single IV bolus. Clinical dosing requires repeated doses — often every 8, 12, or 24 hours. Extending the model to simulate multiple dosing events would allow prediction of drug accumulation and steady-state concentrations, which is directly relevant to therapeutic drug monitoring.</p>
             <div class="ext-tag">Clinical applicability</div>
           </div>
 
           <div class="ext-card">
-            <div class="ext-icon">🧪</div>
             <h3>Patient-Specific Parameter Estimation</h3>
             <p>The paper uses a fixed hypothetical parameter set. A clinically useful tool would allow patient-specific k values to be fitted to measured plasma concentrations. Incorporating a simple least-squares fitting routine would let the model adapt to individual patients — the core goal of personalised dosing.</p>
             <div class="ext-tag">Personalised medicine</div>
           </div>
 
           <div class="ext-card">
-            <div class="ext-icon">🫁</div>
             <h3>Sepsis-Induced Physiological Changes</h3>
             <p>Critically ill sepsis patients exhibit altered pharmacokinetics: expanded volume of distribution due to fluid resuscitation, impaired renal clearance reducing k₁₀, and altered protein binding. Introducing time-varying or condition-dependent rate constants would capture this — making the model more realistic for the clinical setting this project targets.</p>
             <div class="ext-tag">Sepsis adaptation</div>

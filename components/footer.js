@@ -5,7 +5,7 @@ export default function Footer() {
     <footer>
       <div>
         <p class="footer-brand">BioKinetiX</p>
-        <p>Differential Equations Project &mdash; Ashesi University</p>
+        <p>Differential Equations Project @ Ashesi University</p>
       </div>
       <div class="footer-links">
         <a href="/biokinetix/pages/about.html">About</a>

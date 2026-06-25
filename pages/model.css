@@ -41,15 +41,16 @@ main{
   text-decoration: none;
   padding: 5px 10px;
   border-radius: 6px;
-  border-left: 2px solid transparent;
+  /* border-left: 2px solid transparent; */
   transition: all 0.15s;
   line-height: 1.3;
 }
 
 .model-toc a:hover {
-  color: var(--orange);
-  background: var(--light);
-  border-left-color: var(--orange);
+  color: white;
+  background: var(--orange);
+  border: none;
+  /* border-left-color: var(--orange); */
 }
 
 /* ── Model sections ─────────────────────────────────────────── */

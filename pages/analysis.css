@@ -1,8 +1,12 @@
 /* ================================================================
    Analysis Page Styles — BioKinetiX
    ================================================================ */
+main{
+    max-width: 1000px;
+    margin: auto;
+}
 
-.page-hero h1 { color: white; }
+.page-hero h1 { color: var(--orange); }
 
 /* ── Intro ──────────────────────────────────────────────────── */
 .analysis-intro p { max-width: 720px; color: #444; margin-bottom: 32px; }
@@ -35,6 +39,15 @@
 .verdict-icon { font-size: 1.6rem; flex-shrink: 0; }
 
 /* ── Part 1: Analysis grid ──────────────────────────────────── */
+.section{
+  margin: 10px;
+  padding: 10px;
+}
+
+.section-green{
+  background-color: #1e8449;
+}
+
 .analysis-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -68,12 +81,12 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  padding: 3px 9px;
+  /* padding: 3px 9px; */
   border-radius: 4px;
   margin-bottom: 2px;
 }
 
-.block-tag--inherited { background: #fdecea; color: #c0392b; }
+.block-tag--inherited { background: #fdecea; color: var(--orange); }
 .block-tag--new       { background: #eafaf1; color: #1e8449; }
 
 /* ── Part 2: Contributions ──────────────────────────────────── */
@@ -138,7 +151,6 @@
   box-shadow: 0 8px 28px rgba(0,0,0,0.1);
 }
 
-.ext-icon { font-size: 2rem; margin-bottom: 12px; }
 .ext-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 10px; }
 .ext-card p  { font-size: 0.87rem; color: #555; line-height: 1.65; margin-bottom: 14px; }
 
@@ -152,7 +164,7 @@
   border-radius: 4px;
   background: var(--light);
   color: var(--orange);
-  border: 1px solid var(--border);
+  /* border: 1px solid var(--border); */
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
