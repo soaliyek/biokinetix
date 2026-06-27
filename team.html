@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Team · BioKinetiX</title>
+<meta name="description" content="Following a single dose of medicine through the body using a two-compartment model. A BioKinetiX project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]],
+         displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
+  svg: { fontCache: "global" }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="pulse-c" cx="13" cy="20" r="9" fill="#0B2545"/>
+      <circle class="pulse-p" cx="27" cy="20" r="7" fill="#C1121F"/>
+      <path d="M13 20 H27" stroke="#E0A458" stroke-width="2"/>
+    </svg>
+    BioKinetiX
+  </a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="analysis.html">Analysis</a>
+    <a href="programming.html">Applied Programming</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div></nav>
+
+<header class="page-head"><video class="page-head-video" autoplay muted loop playsinline preload="metadata" poster="assets/header-bg-poster.jpg"><source src="assets/header-bg.mp4" type="video/mp4"></video><div class="page-num-watermark">◆</div><div class="wrap">
+  <span class="eyebrow">Who we are</span>
+  <h1>Team BioKinetiX</h1>
+  <p>The six of us behind this project. You can swap each photo box for a real picture, and there are simple instructions just below the cards.</p>
+</div></header>
+
+<section><div class="wrap">
+  <div class="grid grid-team">
+    <div class="card team-card reveal">
+      <div class="team-photo"><img src="assets/team_member_1.jpg" onerror="this.outerHTML=&quot;B&quot;" alt="Member 1"></div>
+      <h3>Member One</h3>
+      <span class="role">Role / Contribution</span>
+      <p>Short bio or contribution to the project.</p>
+    </div>
+    <div class="card team-card reveal reveal-delay-1">
+      <div class="team-photo"><img src="assets/team2.jpg" onerror="this.outerHTML=&quot;I&quot;" alt="Member 2"></div>
+      <h3>Member Two</h3>
+      <span class="role">Role / Contribution</span>
+      <p>Short bio or contribution to the project.</p>
+    </div>
+    <div class="card team-card reveal reveal-delay-2">
+      <div class="team-photo"><img src="assets/team3.jpg" onerror="this.outerHTML=&quot;O&quot;" alt="Member 3"></div>
+      <h3>Member Three</h3>
+      <span class="role">Role / Contribution</span>
+      <p>Short bio or contribution to the project.</p>
+    </div>
+    <div class="card team-card reveal">
+      <div class="team-photo"><img src="assets/team4.jpg" onerror="this.outerHTML=&quot;K&quot;" alt="Member 4"></div>
+      <h3>Member Four</h3>
+      <span class="role">Role / Contribution</span>
+      <p>Short bio or contribution to the project.</p>
+    </div>
+    <div class="card team-card reveal reveal-delay-1">
+      <div class="team-photo"><img src="assets/team5.jpg" onerror="this.outerHTML=&quot;N&quot;" alt="Member 5"></div>
+      <h3>Member Five</h3>
+      <span class="role">Role / Contribution</span>
+      <p>Short bio or contribution to the project.</p>
+    </div>
+    <div class="card team-card reveal reveal-delay-2">
+      <div class="team-photo"><img src="assets/team6.jpg" onerror="this.outerHTML=&quot;X&quot;" alt="Member 6"></div>
+      <h3>Member Six</h3>
+      <span class="role">Role / Contribution</span>
+      <p>Short bio or contribution to the project.</p>
+    </div>
+  </div>
+  <div class="callout reveal" style="margin-top:2.5rem;">
+    <h4>How to add team photos</h4>
+    <p>Save each member's photo as <span style="font-family:var(--mono);color:var(--crimson);">team1.jpg</span>,
+    <span style="font-family:var(--mono);color:var(--crimson);">team2.jpg</span>, etc. (up to
+    <span style="font-family:var(--mono);color:var(--crimson);">team6.jpg</span>) inside the
+    <span style="font-family:var(--mono);color:var(--crimson);">assets/</span> folder, then
+    redeploy. Until then, each card automatically shows the first letter of the placeholder
+    name. To change a name and role, edit <span style="font-family:var(--mono);color:var(--crimson);">team.html</span>.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>
+    <h4>BioKinetiX</h4>
+    <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;max-width:38ch;">
+      A MATH221 and CE122 project that follows a drug through the body using a two-compartment model, based on the work of Fatima et&nbsp;al. (2025).</p>
+  </div>
+  <div>
+    <h4>Explore</h4>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="programming.html">Applied Programming</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="analysis.html">Sensitivity Analysis</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">The Team</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+  <div class="copy">
+    © 2026 Team BioKinetiX · Based on Fatima et&nbsp;al. (2025),
+    <i>Mathematical and Computational Applications</i> 30(4):70 ·
+    Built for MATH221 &amp; CE122.
+  </div>
+</div></footer>
+<script src="app.js"></script>
+
+</body>
+</html>

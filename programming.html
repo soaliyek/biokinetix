@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Applied Programming · BioKinetiX</title>
+<meta name="description" content="Following a single dose of medicine through the body using a two-compartment model. A BioKinetiX project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]],
+         displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
+  svg: { fontCache: "global" }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="pulse-c" cx="13" cy="20" r="9" fill="#0B2545"/>
+      <circle class="pulse-p" cx="27" cy="20" r="7" fill="#C1121F"/>
+      <path d="M13 20 H27" stroke="#E0A458" stroke-width="2"/>
+    </svg>
+    BioKinetiX
+  </a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="analysis.html">Analysis</a>
+    <a href="programming.html">Applied Programming</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div></nav>
+
+<header class="page-head"><video class="page-head-video" autoplay muted loop playsinline preload="metadata" poster="assets/header-bg-poster.jpg"><source src="assets/header-bg.mp4" type="video/mp4"></video><div class="page-num-watermark">05</div><div class="wrap">
+  <span class="eyebrow">Section 05 · CE122</span>
+  <h1>Applied Programming</h1>
+  <p>The code explained part by part, the three methods put side by side, how we measured the errors, and a live version of the model you can play with.</p>
+</div></header>
+
+<section><div class="wrap">
+  <span class="eyebrow reveal">Explanation of the code</span>
+  <h2 class="reveal reveal-delay-1">How the script works</h2>
+  <p class="reveal reveal-delay-2">Our MATLAB script solves the two-compartment model with all three methods over a ten-hour period, taking small steps of $\Delta t = 0.1$ hours, and then checks each result against the exact answer. We split the script into clear parts so it is easy to follow:</p>
+  <div class="grid grid-2" style="margin-top:1.5rem;">
+    <div class="card reveal"><span class="num">PART 1</span><h4>Setting the values</h4>
+      <p>All the speed values and starting amounts are listed together in one place, so we can change any of them for the sensitivity tests without touching the rest of the code.</p></div>
+    <div class="card reveal reveal-delay-1"><span class="num">PART 2</span><h4>The exact answer</h4>
+      <p>We work out the exact answer from the eigenvalues at each point in time. This is the yardstick that every method gets measured against.</p></div>
+    <div class="card reveal"><span class="num">PART 3</span><h4>The Euler method</h4>
+      <p>A simple loop that steps forward in time, using the slope at the current point to guess the next one.</p></div>
+    <div class="card reveal reveal-delay-1"><span class="num">PART 4</span><h4>The Runge–Kutta method</h4>
+      <p>This takes four smaller slope estimates at each step and blends them together with a weighted average to get a much more accurate result.</p></div>
+    <div class="card reveal"><span class="num">PART 5</span><h4>The Adams–Bashforth–Moulton method</h4>
+      <p>We use Runge–Kutta to get the first four points, then this method takes over. It makes a quick guess for the next point and then corrects it.</p></div>
+    <div class="card reveal reveal-delay-1"><span class="num">PART 6</span><h4>Errors and graphs</h4>
+      <p>Finally, we work out how far each method strayed in both compartments and turn everything into the line graphs and bar charts.</p></div>
+  </div>
+  <div class="btn-row">
+    <a class="btn btn-primary" href="BioKinetiX_PK_Model.m" download>↓ Download the MATLAB script</a>
+  </div>
+</div></section>
+
+<section style="background:var(--bone-2);"><div class="wrap">
+  <span class="eyebrow reveal">Comparing the methods</span>
+  <h2 class="reveal reveal-delay-1">All three on one graph</h2>
+  <p class="reveal reveal-delay-2">Putting every method on the same graph as the exact answer makes the difference easy to see. Euler (the dashed line) drifts off during the fast early part, while Runge–Kutta and Adams–Bashforth–Moulton stay right on top of the exact curve.</p>
+  <figure class="figure reveal">
+    <img src="assets/fig7_all_methods.png" alt="All methods vs exact solution overlay">
+    <figcaption><b>Figure 7.</b> The blood level, with all three methods drawn against the exact answer.</figcaption>
+  </figure>
+  <div class="callout reveal"><h4>Which method wins</h4>
+    <p>For accuracy the order is Runge–Kutta first, then Adams–Bashforth–Moulton, then Euler. But each has a trade-off. Euler is the quickest to run but the least accurate. Runge–Kutta is the most accurate, though it does more work at each step. Adams–Bashforth–Moulton sits in between, but it needs a few starting points before it can begin. For this problem, Runge–Kutta gives the best balance.</p></div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow reveal">Error analysis</span>
+  <h2 class="reveal reveal-delay-1">Measuring how far off each method is</h2>
+  <p class="reveal reveal-delay-2">At every time step we measured how far each method sat from the exact answer, in both compartments. The averages back up the ranking we saw on the graphs. Runge–Kutta is off by just 1.54% on average, against 7.66% for Adams–Bashforth–Moulton and 28.62% for Euler. Every method gets more accurate as time goes on, closing in on the exact answer once the levels stop changing so quickly.</p>
+  <div class="tbl-wrap reveal"><table>
+    <thead><tr><th>Method</th><th>Order</th><th>Type</th><th>Average error</th></tr></thead>
+    <tbody>
+      <tr><td>Euler</td><td>1st</td><td>Simple one-step</td><td>28.62%</td></tr>
+      <tr><td>Adams–Bashforth–Moulton</td><td>4th</td><td>Guess-and-correct, multi-step</td><td>7.66%</td></tr>
+      <tr><td><b>Runge–Kutta 4</b></td><td>4th</td><td>Four-slope one-step</td><td><b>1.54%</b></td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section style="background:var(--bone-2);"><div class="wrap">
+  <span class="eyebrow reveal">The model in action</span>
+  <h2 class="reveal reveal-delay-1">Try it yourself</h2>
+  <p class="reveal reveal-delay-2">As well as the fixed graphs, we built a live version of the model. The tool below is the same one from the home page. It solves the equations as you watch, so you can drag the sliders and see the two levels respond straight away.</p>
+  <div class="sim reveal">
+    <div class="sim-grid">
+      <div class="sim-controls" id="progControls"></div>
+      <div>
+        <canvas id="progCanvas"></canvas>
+        <div class="sim-legend">
+          <span><span class="dot" style="background:#0B2545;"></span>Central (mg/L)</span>
+          <span><span class="dot" style="background:#C1121F;"></span>Peripheral (mg/L)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-row"><a class="btn btn-primary" href="further.html">Next: Further Research →</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>
+    <h4>BioKinetiX</h4>
+    <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;max-width:38ch;">
+      A MATH221 and CE122 project that follows a drug through the body using a two-compartment model, based on the work of Fatima et&nbsp;al. (2025).</p>
+  </div>
+  <div>
+    <h4>Explore</h4>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="programming.html">Applied Programming</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="analysis.html">Sensitivity Analysis</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">The Team</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+  <div class="copy">
+    © 2026 Team BioKinetiX · Based on Fatima et&nbsp;al. (2025),
+    <i>Mathematical and Computational Applications</i> 30(4):70 ·
+    Built for MATH221 &amp; CE122.
+  </div>
+</div></footer>
+<script src="app.js"></script>
+<script>PKSimulator("progCanvas","progControls");</script>
+</body>
+</html>

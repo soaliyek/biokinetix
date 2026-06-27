@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Results · BioKinetiX</title>
+<meta name="description" content="Following a single dose of medicine through the body using a two-compartment model. A BioKinetiX project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]],
+         displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
+  svg: { fontCache: "global" }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="pulse-c" cx="13" cy="20" r="9" fill="#0B2545"/>
+      <circle class="pulse-p" cx="27" cy="20" r="7" fill="#C1121F"/>
+      <path d="M13 20 H27" stroke="#E0A458" stroke-width="2"/>
+    </svg>
+    BioKinetiX
+  </a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="analysis.html">Analysis</a>
+    <a href="programming.html">Applied Programming</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div></nav>
+
+<header class="page-head"><video class="page-head-video" autoplay muted loop playsinline preload="metadata" poster="assets/header-bg-poster.jpg"><source src="assets/header-bg.mp4" type="video/mp4"></video><div class="page-num-watermark">03</div><div class="wrap">
+  <span class="eyebrow">Section 03</span>
+  <h1>Results</h1>
+  <p>We recreated every figure from the study in MATLAB, put all three methods side by side, and explain what the graphs are telling us.</p>
+</div></header>
+
+<section><div class="wrap">
+  <span class="eyebrow reveal">Figure replication · Figure 1</span>
+  <h2 class="reveal reveal-delay-1">Concentration profiles in both compartments</h2>
+  <p class="reveal reveal-delay-2">We rebuilt the model ourselves from the ground up and recreated the main figure from the paper. Each panel shows the blood level (navy) and tissue level (crimson) across ten hours, drawn for the exact answer and for each of the three methods. Our results match the published ones right down to four decimal places.</p>
+  <figure class="figure reveal">
+    <img src="assets/fig1_profiles.png" alt="Drug concentration profiles for exact, Euler, RK4 and ABM methods">
+    <figcaption><b>Figure 1.</b> Drug levels over time using (a) the exact answer, (b) the Euler method, (c) the fourth-order Runge–Kutta method, and (d) the Adams–Bashforth–Moulton method. The blood level climbs as the drug spreads in, then falls; the tissue level drops away steadily.</figcaption>
+  </figure>
+
+  <div class="callout reveal">
+    <h4>Reading the curves</h4>
+    <p>The blood starts with no drug in it. The level shoots up as the drug moves in from the tissues, peaks at around the five-hour mark, then drops off as the body clears it. The tissues start fully loaded at 200 mg/L and fall away steadily. The tissue change is gentler than the blood change because tissues take up and release the drug more slowly.</p>
+  </div>
+</div></section>
+
+<section style="background:var(--bone-2);"><div class="wrap">
+  <span class="eyebrow reveal">Figure replication · Figures 2 &amp; 3</span>
+  <h2 class="reveal reveal-delay-1">Where each method goes wrong</h2>
+  <p class="reveal reveal-delay-2">When we plot the size of each method's error against time, the ranking jumps straight out. Euler has the biggest error, and it is worst in the early part where the levels are changing fast. Adams–Bashforth–Moulton sits in the middle. Runge–Kutta stays so close to the exact answer that its error is barely visible the whole way through.</p>
+  <figure class="figure reveal">
+    <img src="assets/fig2_error_central.png" alt="Error comparison central compartment">
+    <figcaption><b>Figure 2.</b> Absolute error in the central compartment for all three methods.</figcaption>
+  </figure>
+  <figure class="figure reveal">
+    <img src="assets/fig3_error_peripheral.png" alt="Error comparison peripheral compartment">
+    <figcaption><b>Figure 3.</b> Absolute error in the peripheral compartment for all three methods.</figcaption>
+  </figure>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow reveal">Figure replication · Figure 4</span>
+  <h2 class="reveal reveal-delay-1">Average error, method by method</h2>
+  <figure class="figure reveal" style="max-width:760px;">
+    <img src="assets/fig4_avg_error.png" alt="Average error bar chart">
+    <figcaption><b>Figure 4.</b> Mean absolute error per method in each compartment.
+    Runge–Kutta is the clear winner across both.</figcaption>
+  </figure>
+
+  <h3 class="reveal">The numbers</h3>
+  <div class="tbl-wrap reveal"><table>
+    <thead><tr><th>Method</th><th>Central</th><th>Peripheral</th><th>Overall avg</th><th>Overall (%)</th></tr></thead>
+    <tbody>
+      <tr><td>Euler</td><td>0.2771</td><td>0.2953</td><td>0.2862</td><td>28.62%</td></tr>
+      <tr><td><b>Runge–Kutta 4</b></td><td><b>0.0086</b></td><td><b>0.0221</b></td><td><b>0.0154</b></td><td><b>1.54%</b></td></tr>
+      <tr><td>Adams–Bashforth–Moulton</td><td>0.0663</td><td>0.0868</td><td>0.0766</td><td>7.66%</td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:0.85rem;color:var(--slate);">Figures taken from Fatima et&nbsp;al. (2025), Table 5. Our own version of the model gives the same ranking and matches their Table 1 blood values to four decimal places.</p>
+</div></section>
+
+<section style="background:var(--bone-2);"><div class="wrap">
+  <span class="eyebrow reveal">Discussion</span>
+  <h2 class="reveal reveal-delay-1">What the study found</h2>
+  <h3 class="reveal">How the blood level behaved</h3>
+  <p class="reveal">Right after the dose, the blood started with no drug in it. It then rose quickly as the drug moved in and got passed around, and finally eased back down as the body cleared it. That rise-then-fall shape is the classic sign of a two-compartment system at work.</p>
+  <h3 class="reveal">How the tissue level behaved</h3>
+  <p class="reveal">The tissues started fully loaded at 200 mg/L and dropped away steadily as the drug moved back into the blood and left the body. This fall was gentler than the sharp early swings seen in the blood.</p>
+  <h3 class="reveal">How the methods compared</h3>
+  <ul class="reveal">
+    <li><b>Euler (28.62% error)</b> drifted the most, and struggled most in the fast early part. It is the simplest method and takes only one basic step at a time, so it has trouble keeping up.</li>
+    <li><b>Adams–Bashforth–Moulton (7.66%)</b> did much better than Euler. It makes a guess and then corrects it, but it needs a few earlier values before it can get going.</li>
+    <li><b>Runge–Kutta 4 (1.54%)</b> was the most accurate in both the blood and the tissues, so close to the exact answer that you can hardly tell them apart.</li>
+  </ul>
+  <div class="callout reveal"><h4>Getting closer over time</h4>
+    <p>All three methods became more accurate as time went on. Once the levels settled and stopped changing so fast, every method closed in on the exact answer.</p></div>
+  <div class="btn-row"><a class="btn btn-primary" href="analysis.html">Next: Mathematical Analysis →</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>
+    <h4>BioKinetiX</h4>
+    <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;max-width:38ch;">
+      A MATH221 and CE122 project that follows a drug through the body using a two-compartment model, based on the work of Fatima et&nbsp;al. (2025).</p>
+  </div>
+  <div>
+    <h4>Explore</h4>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="programming.html">Applied Programming</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="analysis.html">Sensitivity Analysis</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">The Team</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+  <div class="copy">
+    © 2026 Team BioKinetiX · Based on Fatima et&nbsp;al. (2025),
+    <i>Mathematical and Computational Applications</i> 30(4):70 ·
+    Built for MATH221 &amp; CE122.
+  </div>
+</div></footer>
+<script src="app.js"></script>
+
+</body>
+</html>

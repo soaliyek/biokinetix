@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Further Research · BioKinetiX</title>
+<meta name="description" content="Following a single dose of medicine through the body using a two-compartment model. A BioKinetiX project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]],
+         displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
+  svg: { fontCache: "global" }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="pulse-c" cx="13" cy="20" r="9" fill="#0B2545"/>
+      <circle class="pulse-p" cx="27" cy="20" r="7" fill="#C1121F"/>
+      <path d="M13 20 H27" stroke="#E0A458" stroke-width="2"/>
+    </svg>
+    BioKinetiX
+  </a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="analysis.html">Analysis</a>
+    <a href="programming.html">Applied Programming</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div></nav>
+
+<header class="page-head"><video class="page-head-video" autoplay muted loop playsinline preload="metadata" poster="assets/header-bg-poster.jpg"><source src="assets/header-bg.mp4" type="video/mp4"></video><div class="page-num-watermark">06</div><div class="wrap">
+  <span class="eyebrow">Section 06</span>
+  <h1>Further Research</h1>
+  <p>Where this model could go next, and the bigger questions that build on what we have done so far.</p>
+</div></header>
+
+<section><div class="wrap">
+  <span class="eyebrow reveal">Future directions</span>
+  <h2 class="reveal reveal-delay-1">Five ways to take this further</h2>
+  <div class="grid grid-2" style="margin-top:1.5rem;">
+    <div class="card reveal"><span class="num">01</span><h3>Models with memory</h3>
+      <p>Our model assumes the rate of change depends only on what is happening right now. But the body sometimes carries a kind of memory, where past states still have an effect. A different type of maths, called fractional calculus, can capture this and may work better for drugs that stick to the tissues in complicated ways.</p></div>
+    <div class="card reveal reveal-delay-1"><span class="num">02</span><h3>When clearing slows down</h3>
+      <p>Our model assumes the body always clears the drug at a steady pace. At high doses, though, the body's enzymes can get overwhelmed and the clearing slows. Adding a rule for this, known as Michaelis–Menten kinetics, would let the model handle painkillers, HIV drugs, and others that behave this way.</p></div>
+    <div class="card reveal"><span class="num">03</span><h3>Adding more compartments</h3>
+      <p>Some drugs reach deep places like bone marrow or the brain, which may need a third compartment to describe properly. More detailed models can even give each major organ its own compartment with its own measured values. They paint a fuller picture, but they are also harder to build and solve.</p></div>
+    <div class="card reveal reveal-delay-1"><span class="num">04</span><h3>Differences between patients</h3>
+      <p>The speed values change with age, weight, kidney health, and genes. Instead of one fixed number, researchers can treat each value as a range that covers a whole population. This is what makes it possible to fine-tune a dose for each individual.</p></div>
+    <div class="card reveal"><span class="num">05</span><h3>Smarter step sizes</h3>
+      <p>The Adams–Bashforth–Moulton method can be thrown off by a shaky start. Some methods change their step size on the fly, taking small careful steps when things move fast and bigger ones when things are calm, which saves time without losing accuracy.</p></div>
+    <div class="card reveal reveal-delay-1"><span class="num">→</span><h3>Our own change, coming next</h3>
+      <p>For our next submission, our team will make our own change to the model and use it to look at a similar real-life situation that we will design ourselves.</p></div>
+  </div>
+  <div class="btn-row"><a class="btn btn-primary" href="team.html">Meet the team →</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>
+    <h4>BioKinetiX</h4>
+    <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;max-width:38ch;">
+      A MATH221 and CE122 project that follows a drug through the body using a two-compartment model, based on the work of Fatima et&nbsp;al. (2025).</p>
+  </div>
+  <div>
+    <h4>Explore</h4>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="programming.html">Applied Programming</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="analysis.html">Sensitivity Analysis</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">The Team</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+  <div class="copy">
+    © 2026 Team BioKinetiX · Based on Fatima et&nbsp;al. (2025),
+    <i>Mathematical and Computational Applications</i> 30(4):70 ·
+    Built for MATH221 &amp; CE122.
+  </div>
+</div></footer>
+<script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mathematical Analysis · BioKinetiX</title>
+<meta name="description" content="Following a single dose of medicine through the body using a two-compartment model. A BioKinetiX project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]],
+         displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
+  svg: { fontCache: "global" }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="pulse-c" cx="13" cy="20" r="9" fill="#0B2545"/>
+      <circle class="pulse-p" cx="27" cy="20" r="7" fill="#C1121F"/>
+      <path d="M13 20 H27" stroke="#E0A458" stroke-width="2"/>
+    </svg>
+    BioKinetiX
+  </a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="analysis.html">Analysis</a>
+    <a href="programming.html">Applied Programming</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div></nav>
+
+<header class="page-head"><video class="page-head-video" autoplay muted loop playsinline preload="metadata" poster="assets/header-bg-poster.jpg"><source src="assets/header-bg.mp4" type="video/mp4"></video><div class="page-num-watermark">04</div><div class="wrap">
+  <span class="eyebrow">Section 04</span>
+  <h1>Mathematical Analysis</h1>
+  <p>What happens when we change the speed values, what those changes mean for a real patient, and the changes the original researchers made to the basic model.</p>
+</div></header>
+
+<section><div class="wrap">
+  <span class="eyebrow reveal">Sensitivity analysis</span>
+  <h2 class="reveal reveal-delay-1">What happens when we change the speeds</h2>
+  <p class="reveal reveal-delay-2">To find out which speed value matters most, we changed each one in turn across a sensible range and watched what it did to the blood level. The ranges we used sit around the values from the paper and cover what other studies have reported as realistic.</p>
+
+  <h3 class="reveal">Changing $k_{12}$, the speed into the tissues</h3>
+  <p class="reveal">We tried $k_{12}$ from 0.1 up to 1.0 per hour, with 0.5 as the starting point. The higher this value, the faster the drug rushes into the tissues. This makes the blood peak both smaller and sharper, because the more quickly the drug leaves the blood, the less of it is sitting there at any one time.</p>
+  <figure class="figure reveal">
+    <img src="assets/fig5_sensitivity_k12.png" alt="Sensitivity analysis of k12">
+    <figcaption><b>Figure 5.</b> The blood level for five different values of $k_{12}$. A faster move into the tissues flattens the peak.</figcaption>
+  </figure>
+
+  <h3 class="reveal">Changing $k_{10}$, the speed of leaving the body</h3>
+  <p class="reveal">We tried $k_{10}$ from 0.01 up to 0.40 per hour, with 0.05 as the starting point. This one turned out to have the biggest effect on how much drug the body sees overall. Raising it pulls the whole blood curve down and clears the drug out sooner, which is what you would expect in a patient whose liver and kidneys are working well.</p>
+  <figure class="figure reveal">
+    <img src="assets/fig6_sensitivity_k10.png" alt="Sensitivity analysis of k10">
+    <figcaption><b>Figure 6.</b> The blood level for five different values of $k_{10}$. Clearing the drug faster lowers the curve and steepens its fall.</figcaption>
+  </figure>
+
+  <div class="callout reveal">
+    <h4>What this means in practice</h4>
+    <p>These graphs stand for real things. The value $k_{10}$ matches how well a patient clears the drug, which drops when the kidneys are not working well, so the dose has to come down to stay safe. The values $k_{12}$ and $k_{21}$ match how the drug spreads into the tissues, which changes with body type. Since clearing the drug has the biggest effect on the total amount the body takes in, that is the value doctors need to judge most carefully when setting a dose for each person.</p>
+  </div>
+</div></section>
+
+<section style="background:var(--bone-2);"><div class="wrap">
+  <span class="eyebrow reveal">Model modifications</span>
+  <h2 class="reveal reveal-delay-1">The changes the original researchers made</h2>
+  <p class="reveal reveal-delay-2">No research model is used exactly as it comes out of the textbook. The study by Fatima et&nbsp;al. (2025) made a few clear changes to the basic two-compartment model, and these are the ones we report and look at here.</p>
+
+  <div class="grid grid-2" style="margin-top:1.5rem;">
+    <div class="card reveal"><span class="num">CHANGE 01</span>
+      <h3>From amount to concentration</h3>
+      <p>The basic model follows the <i>amount</i> of drug in milligrams. The researchers switched it to follow <i>concentration</i> in mg/L instead, by dividing through by the size of each compartment. Doctors measure concentration in the blood, not the raw amount, so this makes the maths line up with what is actually checked in the clinic.</p></div>
+    <div class="card reveal reveal-delay-1"><span class="num">CHANGE 02</span>
+      <h3>Adding a third method to compare</h3>
+      <p>Studies like this usually only use simple one-step methods. The researchers added the Adams–Bashforth–Moulton method, which makes a guess and then corrects it, to see whether this kind of method is actually more accurate. Earlier work had not really settled that question.</p></div>
+    <div class="card reveal"><span class="num">CHANGE 03</span>
+      <h3>Using the exact answer as a yardstick</h3>
+      <p>Instead of only comparing the methods against each other or against lab data, the researchers worked out the exact answer using eigenvalues. That gave them a fixed reference, so they could measure exactly how far off each method was at every time step.</p></div>
+    <div class="card reveal reveal-delay-1"><span class="num">CHANGE 04</span>
+      <h3>Picking realistic speed values</h3>
+      <p>The speed values ($k_{10} = 0.05$, $k_{12} = 0.50$, $k_{21} = 0.25$ per hour) were taken from known pharmacokinetic studies rather than chosen at random, which keeps the whole simulation close to what really happens in the body.</p></div>
+  </div>
+  <div class="btn-row"><a class="btn btn-primary" href="programming.html">Next: Applied Programming →</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>
+    <h4>BioKinetiX</h4>
+    <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;max-width:38ch;">
+      A MATH221 and CE122 project that follows a drug through the body using a two-compartment model, based on the work of Fatima et&nbsp;al. (2025).</p>
+  </div>
+  <div>
+    <h4>Explore</h4>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="programming.html">Applied Programming</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="analysis.html">Sensitivity Analysis</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">The Team</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+  <div class="copy">
+    © 2026 Team BioKinetiX · Based on Fatima et&nbsp;al. (2025),
+    <i>Mathematical and Computational Applications</i> 30(4):70 ·
+    Built for MATH221 &amp; CE122.
+  </div>
+</div></footer>
+<script src="app.js"></script>
+
+</body>
+</html>

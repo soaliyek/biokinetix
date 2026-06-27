@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introduction · BioKinetiX</title>
+<meta name="description" content="Modelling intravascular drug concentration using a two-compartment pharmacokinetic model. A BioKinetiX project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]],
+         displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
+  svg: { fontCache: "global" }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="pulse-c" cx="13" cy="20" r="9" fill="#0B2545"/>
+      <circle class="pulse-p" cx="27" cy="20" r="7" fill="#C1121F"/>
+      <path d="M13 20 H27" stroke="#E0A458" stroke-width="2"/>
+    </svg>
+    BioKinetiX
+  </a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="analysis.html">Analysis</a>
+    <a href="programming.html">Applied Programming</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div></nav>
+
+<header class="page-head"><video class="page-head-video" autoplay muted loop playsinline preload="metadata" poster="assets/header-bg-poster.jpg"><source src="assets/header-bg.mp4" type="video/mp4"></video><div class="page-num-watermark">01</div><div class="wrap">
+  <span class="eyebrow">Section 01</span>
+  <h1>Introduction</h1>
+  <p>The real-world problem, why it matters, and how differential equations let researchers
+  predict the journey of a drug through the human body.</p>
+</div></header>
+
+<section><div class="wrap">
+  <span class="eyebrow reveal">Background</span>
+  <h2 class="reveal reveal-delay-1">The science of where a drug goes</h2>
+  <p class="reveal reveal-delay-2">In clinical pharmacology and personalised medicine, understanding how a drug moves
+  through the human body is fundamental to patient safety and therapeutic effectiveness.
+  When a drug is administered intravenously, it does not remain uniformly distributed.
+  Instead, it migrates between physiologically distinct regions at different rates — a
+  dynamic process that, if poorly understood, can result in under-dosing, toxicity, or
+  outright treatment failure.</p>
+
+  <p class="reveal"><b>Pharmacokinetics</b> is the scientific discipline that quantifies this behaviour.
+  It describes how a drug is absorbed, distributed, metabolised, and excreted — collectively
+  referred to as ADMET (Absorption, Distribution, Metabolism, Excretion, and Toxicity).
+  Among the mathematical frameworks used in pharmacokinetic analysis, <b>compartmental
+  modelling</b> has proven to be one of the most powerful and widely applied approaches.</p>
+
+  <div class="callout reveal">
+    <h4>The two-compartment idea</h4>
+    <p>The model divides the body into two interconnected regions: a <b>central
+    compartment</b> (the bloodstream and highly perfused organs — heart, liver, kidneys),
+    where the drug is introduced and distributes rapidly; and a <b>peripheral compartment</b>
+    (tissues that receive the drug more slowly — muscle, fat, skin). Drug transfer between
+    them, and elimination from the body, follows first-order kinetics, expressible as a
+    system of ordinary differential equations.</p>
+  </div>
+</div></section>
+
+<section style="background:var(--bone-2);"><div class="wrap">
+  <span class="eyebrow reveal">Why it matters</span>
+  <h2 class="reveal reveal-delay-1">Mathematics in service of medicine</h2>
+  <p class="reveal reveal-delay-2">The accurate prediction of drug concentration over time is not a theoretical exercise —
+  it has direct consequences for clinical decision-making:</p>
+  <div class="grid grid-3" style="margin-top:1.5rem;">
+    <div class="card reveal"><h4>Dosing intervals</h4>
+      <p>If a drug clears the central compartment too quickly, it may fall below its
+      therapeutic threshold before the next dose — rendering treatment ineffective.</p></div>
+    <div class="card reveal reveal-delay-1"><h4>Toxicity prevention</h4>
+      <p>If distribution to the peripheral compartment is slower than expected, blood
+      concentrations can climb to toxic levels.</p></div>
+    <div class="card reveal reveal-delay-2"><h4>Personalised medicine</h4>
+      <p>Patients differ in weight, organ function, and age — all affecting rate constants.
+      Accurate modelling enables dose individualisation.</p></div>
+  </div>
+  <p style="margin-top:1.5rem;" class="reveal">Previous studies have applied the two-compartment model to a
+  wide range of drugs and delivery routes — from intravenous levodopa for Parkinson's disease,
+  to the antibiotic sisomicin in healthy volunteers, to the antihistamine mizolastine. In each
+  case, the model characterised drug distribution and elimination with clinical precision.</p>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow reveal">Objectives</span>
+  <h2 class="reveal reveal-delay-1">What the paper set out to do</h2>
+  <p class="reveal reveal-delay-2">The study by Fatima et&nbsp;al. (2025), published in <i>Mathematical and Computational
+  Applications</i>, presents a rigorous investigation of intravascular drug concentration
+  dynamics using the two-compartment open pharmacokinetic model. The objectives addressed
+  in the paper are:</p>
+  <ol style="margin-top:1rem;" class="reveal">
+    <li>To formulate and explain the system of ODEs governing drug concentration in both compartments.</li>
+    <li>To derive the <b>analytical (exact) solution</b> using eigenvalue decomposition and matrix methods.</li>
+    <li>To implement and compare three numerical methods — the <b>Euler method</b>, the
+        <b>fourth-order Runge–Kutta method</b>, and the <b>Adams–Bashforth–Moulton method</b>.</li>
+    <li>To conduct a thorough <b>error analysis</b>, quantifying each method's deviation from the exact solution.</li>
+    <li>To investigate model parameters through <b>sensitivity analysis</b>.</li>
+    <li>To examine the modifications the original researchers introduced to better reflect real-world behaviour.</li>
+  </ol>
+  <div class="callout reveal">
+    <h4>How differential equations are used</h4>
+    <p>The rate of change of drug concentration in each compartment depends on the current
+    concentrations in both. That coupling — rate of change expressed in terms of present
+    state — is exactly what a differential equation captures. Solving the system reveals the
+    full concentration-time profile from a single injected dose.</p>
+  </div>
+  <div class="btn-row">
+    <a class="btn btn-primary" href="model.html">Next: The Model →</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>
+    <h4>BioKinetiX</h4>
+    <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;max-width:38ch;">
+      Modelling intravascular drug concentration using a two-compartment
+      pharmacokinetic model — a MATH221 &amp; CE122 project replicating Fatima
+      et&nbsp;al. (2025) in differential equations, numerical methods, and
+      applied programming.</p>
+  </div>
+  <div>
+    <h4>Explore</h4>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="programming.html">Applied Programming</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="analysis.html">Sensitivity Analysis</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">The Team</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+  <div class="copy">
+    © 2026 Team BioKinetiX · Based on Fatima et&nbsp;al. (2025),
+    <i>Mathematical and Computational Applications</i> 30(4):70 ·
+    Built for MATH221 &amp; CE122.
+  </div>
+</div></footer>
+<script src="app.js"></script>
+
+</body>
+</html>

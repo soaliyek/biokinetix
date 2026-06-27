@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Model · BioKinetiX</title>
+<meta name="description" content="Following a single dose of medicine through the body using a two-compartment model. A BioKinetiX project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]],
+         displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
+  svg: { fontCache: "global" }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="pulse-c" cx="13" cy="20" r="9" fill="#0B2545"/>
+      <circle class="pulse-p" cx="27" cy="20" r="7" fill="#C1121F"/>
+      <path d="M13 20 H27" stroke="#E0A458" stroke-width="2"/>
+    </svg>
+    BioKinetiX
+  </a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="analysis.html">Analysis</a>
+    <a href="programming.html">Applied Programming</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div></nav>
+
+<header class="page-head"><video class="page-head-video" autoplay muted loop playsinline preload="metadata" poster="assets/header-bg-poster.jpg"><source src="assets/header-bg.mp4" type="video/mp4"></video><div class="page-num-watermark">02</div><div class="wrap">
+  <span class="eyebrow">Section 02</span>
+  <h1>The Model</h1>
+  <p>Every part of the body, every symbol, and every equation, explained step by step and then solved.</p>
+</div></header>
+
+<section><div class="wrap">
+  <span class="eyebrow reveal">Overview</span>
+  <h2 class="reveal reveal-delay-1">A body in two compartments</h2>
+  <p class="reveal reveal-delay-2">The two-compartment model describes what happens after a single dose is injected straight into the bloodstream all at once, at the start time we call $t = 0$. We treat the body as two connected spaces, and the drug flows between them at a steady pace. The rule is simple: the more drug there is in one space, the faster it flows out of that space into the next.</p>
+
+  <div class="compartment-fig reveal">
+    <svg viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6 Z" fill="#0B2545"/>
+        </marker>
+        <marker id="arrowR" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6 Z" fill="#C1121F"/>
+        </marker>
+        <marker id="arrowT" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6 Z" fill="#1A8FA0"/>
+        </marker>
+      </defs>
+      <rect x="60" y="90" width="180" height="110" rx="14" fill="#0B2545"/>
+      <text x="150" y="130" fill="#fff" font-family="Fraunces,serif" font-size="19" text-anchor="middle" font-weight="600">Central</text>
+      <text x="150" y="152" fill="#cdd8e4" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle">Compartment 1</text>
+      <text x="150" y="174" fill="#E0A458" font-family="JetBrains Mono,monospace" font-size="13" text-anchor="middle">C_c(t), V_1</text>
+      <rect x="400" y="90" width="180" height="110" rx="14" fill="#C1121F"/>
+      <text x="490" y="130" fill="#fff" font-family="Fraunces,serif" font-size="19" text-anchor="middle" font-weight="600">Peripheral</text>
+      <text x="490" y="152" fill="#ffd9d9" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle">Compartment 2</text>
+      <text x="490" y="174" fill="#ffe8c8" font-family="JetBrains Mono,monospace" font-size="13" text-anchor="middle">C_p(t), V_2</text>
+      <path class="flow-arrow" d="M245 120 H395" stroke="#0B2545" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+      <text x="320" y="112" fill="#0B2545" font-family="JetBrains Mono,monospace" font-size="13" text-anchor="middle">k_12</text>
+      <path class="flow-arrow-r" d="M395 170 H245" stroke="#C1121F" stroke-width="2.5" fill="none" marker-end="url(#arrowR)"/>
+      <text x="320" y="192" fill="#C1121F" font-family="JetBrains Mono,monospace" font-size="13" text-anchor="middle">k_21</text>
+      <path d="M150 50 V85" stroke="#1A8FA0" stroke-width="2.5" fill="none" marker-end="url(#arrowT)"/>
+      <text x="150" y="42" fill="#1A8FA0" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle">IV bolus dose</text>
+      <path d="M150 205 V245" stroke="#0B2545" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+      <text x="150" y="263" fill="#0B2545" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle">k_10 · elimination</text>
+    </svg>
+    <p style="font-size:0.85rem;color:var(--slate);font-style:italic;">
+      Figure: The two-compartment open model. Drug enters the central compartment,
+      exchanges with the peripheral compartment via $k_{12}$ and $k_{21}$, and is eliminated via $k_{10}$.</p>
+  </div>
+</div></section>
+
+<section style="background:var(--bone-2);"><div class="wrap">
+  <span class="eyebrow reveal">Variables &amp; parameters</span>
+  <h2 class="reveal reveal-delay-1">What every symbol means</h2>
+  <div class="tbl-wrap reveal"><table>
+    <thead><tr><th>Symbol</th><th>Description</th><th>Units</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td class="sym">$C_c(t)$</td><td>Drug level in the blood (central compartment)</td><td>mg/L</td><td>variable</td></tr>
+      <tr><td class="sym">$C_p(t)$</td><td>Drug level in the tissues (peripheral compartment)</td><td>mg/L</td><td>variable</td></tr>
+      <tr><td class="sym">$k_{10}$</td><td>How fast the drug leaves the body from the blood</td><td>h⁻¹</td><td>0.05</td></tr>
+      <tr><td class="sym">$k_{12}$</td><td>How fast the drug moves from blood to tissues</td><td>h⁻¹</td><td>0.50</td></tr>
+      <tr><td class="sym">$k_{21}$</td><td>How fast the drug moves from tissues to blood</td><td>h⁻¹</td><td>0.25</td></tr>
+      <tr><td class="sym">$V_1$</td><td>Size of the central compartment (the blood)</td><td>L</td><td>—</td></tr>
+      <tr><td class="sym">$V_2$</td><td>Size of the peripheral compartment (the tissues)</td><td>L</td><td>—</td></tr>
+      <tr><td class="sym">$C_c(0)$</td><td>Drug level in the blood at the start</td><td>mg/L</td><td>0</td></tr>
+      <tr><td class="sym">$C_p(0)$</td><td>Drug level in the tissues at the start</td><td>mg/L</td><td>200</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow reveal">Governing equations</span>
+  <h2 class="reveal reveal-delay-1">From amounts to concentrations</h2>
+  <p class="reveal reveal-delay-2">The amount of drug in each compartment is linked to its concentration by the size, or volume, of that compartment:</p>
+  <div class="eq reveal">$$A_c(t) = C_c(t)\cdot V_1$$<span class="lbl">(1)</span></div>
+  <div class="eq reveal">$$A_p(t) = C_p(t)\cdot V_2$$<span class="lbl">(2)</span></div>
+
+  <p class="reveal">Doctors measure concentration in the blood, not the raw amount, so we write the equations in terms of concentration. This gives us the two equations at the heart of the model:</p>
+
+  <div class="eq reveal">$$\frac{dC_c}{dt} = -(k_{12} + k_{10})\,C_c + k_{21}\,C_p$$<span class="lbl">(3)</span></div>
+  <div class="eq reveal">$$\frac{dC_p}{dt} = k_{12}\,C_c - k_{21}\,C_p$$<span class="lbl">(4)</span></div>
+
+  <h3 class="reveal">Reading the first equation</h3>
+  <p class="reveal">This one tracks the blood (the central compartment). Three things change its level at the same time:</p>
+  <ul class="reveal">
+    <li>$-k_{12}\,C_c$ is drug leaving the blood and moving into the tissues.</li>
+    <li>$-k_{10}\,C_c$ is drug leaving the body for good, broken down or passed out.</li>
+    <li>$+k_{21}\,C_p$ is drug coming back from the tissues, which pushes the blood level up again.</li>
+  </ul>
+  <h3 class="reveal">Reading the second equation</h3>
+  <p class="reveal">This one tracks the tissues (the peripheral compartment). Only two things matter here:</p>
+  <ul class="reveal">
+    <li>$+k_{12}\,C_c$ is drug arriving from the blood.</li>
+    <li>$-k_{21}\,C_p$ is drug heading back to the blood.</li>
+  </ul>
+</div></section>
+
+<section style="background:var(--bone-2);"><div class="wrap">
+  <span class="eyebrow reveal">Linear algebra</span>
+  <h2 class="reveal reveal-delay-1">The matrix form &amp; exact solution</h2>
+  <p class="reveal reveal-delay-2">Written compactly, the system is $\dfrac{d\mathbf{C}}{dt} = \mathbf{A}\,\mathbf{C}(t)$, where:</p>
+  <div class="eq reveal">$$\mathbf{A} = \begin{bmatrix} -(k_{12}+k_{10}) & k_{21} \\ k_{12} & -k_{21} \end{bmatrix} = \begin{bmatrix} -0.55 & \phantom{-}0.25 \\ \phantom{-}0.50 & -0.25 \end{bmatrix}$$</div>
+
+  <p class="reveal">The eigenvalues of $\mathbf{A}$ solve the characteristic equation $\det(\mathbf{A} - \lambda\mathbf{I}) = 0$:</p>
+  <div class="eq reveal">$$\lambda^2 + 0.8\lambda + 0.0125 = 0 \;\;\Longrightarrow\;\; \lambda_1 = -0.0159,\;\; \lambda_2 = -0.7841$$</div>
+
+  <p class="reveal">Both eigenvalues come out negative. That is a good sign, because it means the drug level always falls toward zero over time, which is exactly what should happen as the body clears the drug. Putting in the starting values $C_c(0) = 0$ and $C_p(0) = 200$ gives the exact answer for each compartment. These two equations are the benchmark we test the other methods against:</p>
+  <div class="eq reveal">$$C_c(t) = 65.089\,e^{-0.0159\,t} - 65.09\,e^{-0.7841\,t}$$</div>
+  <div class="eq reveal">$$C_p(t) = 139.05\,e^{-0.0159\,t} + 60.94\,e^{-0.7841\,t}$$</div>
+
+  <div class="callout reveal">
+    <h4>Why the exact answer matters</h4>
+    <p>Because we can solve these equations exactly, we have a perfect yardstick. Every other method we try can be checked against it to see how close it gets. That turns the whole project from guesswork into a fair, measurable test.</p>
+  </div>
+  <div class="btn-row"><a class="btn btn-primary" href="results.html">Next: Results →</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>
+    <h4>BioKinetiX</h4>
+    <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;max-width:38ch;">
+      A MATH221 and CE122 project that follows a drug through the body using a two-compartment model, based on the work of Fatima et&nbsp;al. (2025).</p>
+  </div>
+  <div>
+    <h4>Explore</h4>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="programming.html">Applied Programming</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="analysis.html">Sensitivity Analysis</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">The Team</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+  <div class="copy">
+    © 2026 Team BioKinetiX · Based on Fatima et&nbsp;al. (2025),
+    <i>Mathematical and Computational Applications</i> 30(4):70 ·
+    Built for MATH221 &amp; CE122.
+  </div>
+</div></footer>
+<script src="app.js"></script>
+
+</body>
+</html>

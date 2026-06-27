@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home · BioKinetiX</title>
+<meta name="description" content="Following a single dose of medicine through the body using a two-compartment model. A BioKinetiX project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500;9..144,1,600;9..144,1,700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]],
+         displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
+  svg: { fontCache: "global" }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="pulse-c" cx="13" cy="20" r="9" fill="#0B2545"/>
+      <circle class="pulse-p" cx="27" cy="20" r="7" fill="#C1121F"/>
+      <path d="M13 20 H27" stroke="#E0A458" stroke-width="2"/>
+    </svg>
+    BioKinetiX
+  </a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="analysis.html">Analysis</a>
+    <a href="programming.html">Applied Programming</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div></nav>
+
+<!-- HERO with live molecule flow canvas -->
+<header class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/header-bg-poster.jpg"><source src="assets/header-bg.mp4" type="video/mp4"></video>
+  
+  <div class="wrap">
+    <div class="hero-rule"></div>
+    <span class="eyebrow">MATH221 &amp; CE122 · Differential Equations × Numerical Methods</span>
+    <h1>How does a drug<br><span class="gradtext">travel</span> through the body?</h1>
+    <p>This project follows a single dose of medicine as it moves through the body. We use a two-compartment model, which is a set of equations we first solve exactly and then solve three other ways to see how close each one gets.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="model.html">Explore the model →</a>
+      <a class="btn btn-ghost" href="#simulator">Try the live simulator</a>
+    </div>
+    <div class="hero-meta">
+      <div><b>2</b>compartments</div>
+      <div><b>3</b>numerical methods</div>
+      <div><b>1.54%</b>best-method error</div>
+      <div><b>1</b>exact answer</div>
+    </div>
+  </div>
+  
+</header>
+
+<!-- MARQUEE 1 -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Pharmacokinetics <span class="dot"></span> Differential Equations <span class="dot"></span> Numerical Methods <span class="dot"></span> Two-Compartment Model <span class="dot"></span> BioKinetiX <span class="dot"></span></span>
+    <span>Pharmacokinetics <span class="dot"></span> Differential Equations <span class="dot"></span> Numerical Methods <span class="dot"></span> Two-Compartment Model <span class="dot"></span> BioKinetiX <span class="dot"></span></span>
+  </div>
+</div>
+
+<!-- INTRO SECTION with big statement -->
+<section style="position:relative;"><div class="section-num">01</div><div class="wrap">
+  <span class="eyebrow reveal">The problem</span>
+  <h2 class="big-statement reveal reveal-delay-1">A drug does not stay <em>where you put it.</em></h2>
+  <p class="lead reveal reveal-delay-2">The moment a drug enters the blood, it starts a two-way trip. It spreads out into the body's tissues and, at the same time, the body begins clearing it away. Working out how its level changes over time is what separates a dose that helps from one that harms.</p>
+
+  <div class="grid grid-3" style="margin-top:3rem;">
+    <div class="card reveal">
+      <span class="num">01 · CENTRAL</span>
+      <h3>The blood</h3>
+      <p>This is where the drug starts, in the blood and the organs it reaches quickly, like the heart, liver, and kidneys. The level here shoots up fast, then drops as the drug spreads out and gets cleared.</p>
+    </div>
+    <div class="card reveal reveal-delay-1">
+      <span class="num">02 · PERIPHERAL</span>
+      <h3>The tissues</h3>
+      <p>Muscle, fat, and skin take up the drug more slowly. The level here drops away gently as the drug drifts back into the blood and slowly leaves the body.</p>
+    </div>
+    <div class="card reveal reveal-delay-2">
+      <span class="num">03 · THE MATH</span>
+      <h3>Two linked equations</h3>
+      <p>Two simple equations describe how the drug moves between the blood and the tissues. We solve them exactly using eigenvalues, then test three other methods against that exact answer.</p>
+    </div>
+  </div>
+</div></section>
+
+
+
+<!-- 3D ADME JOURNEY SIMULATION (auto-playing) -->
+<section class="adme3d-section" id="adme"><div class="wrap">
+  <span class="eyebrow reveal">See it happen · ADME</span>
+  <h2 class="big-statement reveal reveal-delay-1">Watch a tablet<br><em>move through the body.</em></h2>
+  <p class="lead reveal reveal-delay-2">This runs on its own. A single dose is swallowed, soaks into the blood, gets carried to every organ, is broken down by the liver, and finally leaves through the kidneys. The body turns slowly so you can see the journey in three dimensions.</p>
+
+  <div class="adme3d-panel reveal">
+    <div class="adme3d-stage">
+      <div id="adme3dCanvas"></div>
+      <div class="adme3d-overlay">
+        <div class="adme3d-phase-tag" id="adme3dPhaseTag">Step 1 of 6</div>
+        <h3 class="adme3d-title" id="adme3dTitle">Swallowing the dose</h3>
+        <p class="adme3d-caption" id="adme3dCaption">You take the tablet by mouth and swallow it. It heads down toward the stomach to begin its journey.</p>
+      </div>
+      <div class="adme3d-legend">
+        <span><i style="background:#E0A458;"></i>The drug</span>
+        <span><i style="background:#F97316;"></i>Broken-down pieces</span>
+        <span><i style="background:#A855F7;"></i>Being cleared out</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="adme3d-progress"><div class="adme3d-progress-fill" id="adme3dProgress"></div></div>
+
+  <div class="adme3d-steps">
+    <div class="adme3d-step"><b>1</b><span>Swallowed</span></div>
+    <div class="adme3d-step"><b>2</b><span>Absorbed</span></div>
+    <div class="adme3d-step"><b>3</b><span>Carried by blood</span></div>
+    <div class="adme3d-step"><b>4</b><span>Reaches target</span></div>
+    <div class="adme3d-step"><b>5</b><span>Liver breaks it down</span></div>
+    <div class="adme3d-step"><b>6</b><span>Kidneys clear it</span></div>
+  </div>
+
+  <p class="reveal" style="font-size:0.92rem;color:var(--slate);margin-top:1.5rem;max-width:75ch;">
+    Here is how this links to the maths in our project. The model we study splits the body into two parts that the drug moves between. The first part is the blood, which is what you see the drug entering once it is absorbed. The second part is the body tissue it spreads into afterwards. The rate at which the drug finally leaves the body in our equations stands for the work the liver and kidneys do together in these last two steps.
+  </p>
+</div></section>
+
+
+<!-- LIVE SIMULATOR -->
+<section id="simulator" style="background:var(--bone-2);position:relative;"><div class="section-num">02</div><div class="wrap">
+  <span class="eyebrow reveal">Live model</span>
+  <h2 class="big-statement reveal reveal-delay-1">Move the rate constants.<br><em>Watch the body respond.</em></h2>
+  <p class="lead reveal reveal-delay-2">This tool solves the very same equations from the paper while you watch, using the Runge–Kutta method. Drag any slider and the two curves update straight away, so you can see how the different speeds change the way the drug moves.</p>
+
+  <div class="sim reveal">
+    <div class="sim-grid">
+      <div class="sim-controls" id="simControls"></div>
+      <div>
+        <canvas id="simCanvas"></canvas>
+        <div class="sim-legend">
+          <span><span class="dot" style="background:#0B2545;"></span>Blood level (mg/L)</span>
+          <span><span class="dot" style="background:#C1121F;"></span>Tissue level (mg/L)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:0.88rem;color:var(--slate);">Try this: turning up <b>k₁₀</b> pulls both curves down faster, because the body clears the drug sooner. Turning up <b>k₁₂</b> pushes the drug into the tissues harder, which makes the early peak in the blood sharper.</p>
+</div></section>
+
+<!-- MARQUEE 2 -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Central → Peripheral <span class="dot"></span> k₁₂ = 0.50 h⁻¹ <span class="dot"></span> Peripheral → Central <span class="dot"></span> k₂₁ = 0.25 h⁻¹ <span class="dot"></span> Elimination <span class="dot"></span> k₁₀ = 0.05 h⁻¹ <span class="dot"></span></span>
+    <span>Central → Peripheral <span class="dot"></span> k₁₂ = 0.50 h⁻¹ <span class="dot"></span> Peripheral → Central <span class="dot"></span> k₂₁ = 0.25 h⁻¹ <span class="dot"></span> Elimination <span class="dot"></span> k₁₀ = 0.05 h⁻¹ <span class="dot"></span></span>
+  </div>
+</div>
+
+<!-- BIG TILES PROJECT GRID -->
+<section style="position:relative;"><div class="section-num">03</div><div class="wrap">
+  <span class="eyebrow reveal">The whole project</span>
+  <h2 class="big-statement reveal reveal-delay-1">Six sections.<br><em>One complete picture.</em></h2>
+
+  <div class="tile-grid">
+    <a class="tile v1 reveal" href="introduction.html">
+      <div class="tile-bg"></div>
+      <span class="tile-num">01 · INTRODUCTION</span>
+      <span class="tile-arrow">↗</span>
+      <div class="tile-content">
+        <h3>The real-world problem</h3>
+        <p>Why the drug level matters, and how a few equations let us follow it.</p>
+      </div>
+    </a>
+    <a class="tile v2 reveal reveal-delay-1" href="model.html">
+      <div class="tile-bg"></div>
+      <span class="tile-num">02 · THE MODEL</span>
+      <span class="tile-arrow">↗</span>
+      <div class="tile-content">
+        <h3>Every variable, every equation</h3>
+        <p>The two equations explained step by step, plus the exact answer worked out in full.</p>
+      </div>
+    </a>
+    <a class="tile v3 reveal" href="results.html">
+      <div class="tile-bg"></div>
+      <span class="tile-num">03 · RESULTS</span>
+      <span class="tile-arrow">↗</span>
+      <div class="tile-content">
+        <h3>Replicated figures</h3>
+        <p>Every graph from the paper, rebuilt by us, with all three methods put side by side.</p>
+      </div>
+    </a>
+    <a class="tile v4 reveal reveal-delay-1" href="analysis.html">
+      <div class="tile-bg"></div>
+      <span class="tile-num">04 · ANALYSIS</span>
+      <span class="tile-arrow">↗</span>
+      <div class="tile-content">
+        <h3>Parameter sensitivity</h3>
+        <p>What happens when we change the speeds, and the changes the researchers made.</p>
+      </div>
+    </a>
+    <a class="tile v5 reveal" href="programming.html">
+      <div class="tile-bg"></div>
+      <span class="tile-num">05 · PROGRAMMING</span>
+      <span class="tile-arrow">↗</span>
+      <div class="tile-content">
+        <h3>The code in MATLAB</h3>
+        <p>The code explained part by part, the methods compared, and a live version to try.</p>
+      </div>
+    </a>
+    <a class="tile v6 reveal reveal-delay-1" href="further.html">
+      <div class="tile-bg"></div>
+      <span class="tile-num">06 · FURTHER RESEARCH</span>
+      <span class="tile-arrow">↗</span>
+      <div class="tile-content">
+        <h3>Where the model goes next</h3>
+        <p>Bigger models, real patient differences, and the change our team will make next.</p>
+      </div>
+    </a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>
+    <h4>BioKinetiX</h4>
+    <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;max-width:38ch;">
+      A MATH221 and CE122 project that follows a drug through the body using a two-compartment model, based on the work of Fatima et&nbsp;al. (2025).</p>
+  </div>
+  <div>
+    <h4>Explore</h4>
+    <a href="introduction.html">Introduction</a>
+    <a href="model.html">The Model</a>
+    <a href="results.html">Results</a>
+    <a href="programming.html">Applied Programming</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="analysis.html">Sensitivity Analysis</a>
+    <a href="further.html">Further Research</a>
+    <a href="team.html">The Team</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+  <div class="copy">
+    © 2026 Team BioKinetiX · Based on Fatima et&nbsp;al. (2025),
+    <i>Mathematical and Computational Applications</i> 30(4):70 ·
+    Built for MATH221 &amp; CE122.
+  </div>
+</div></footer>
+<script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="adme3d.js"></script>
+<script>
+  PKSimulator("simCanvas","simControls");
+  if (typeof THREE !== "undefined") { ADME3D("adme3dCanvas"); }
+  else {
+    // Retry shortly in case CDN is slow
+    window.addEventListener("load", function(){
+      setTimeout(function(){ if (typeof THREE !== "undefined") ADME3D("adme3dCanvas"); }, 800);
+    });
+  }
+</script>
+</body>
+</html>
