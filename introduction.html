@@ -56,12 +56,12 @@ window.MathJax = {
   <p class="reveal reveal-delay-2">In clinical pharmacology and personalised medicine, understanding how a drug moves
   through the human body is fundamental to patient safety and therapeutic effectiveness.
   When a drug is administered intravenously, it does not remain uniformly distributed.
-  Instead, it migrates between physiologically distinct regions at different rates — a
-  dynamic process that, if poorly understood, can result in under-dosing, toxicity, or
+  Instead, it migrates between physiologically distinct regions at different rates. This
+  dynamic process, if poorly understood, can result in under-dosing, toxicity, or
   outright treatment failure.</p>
 
   <p class="reveal"><b>Pharmacokinetics</b> is the scientific discipline that quantifies this behaviour.
-  It describes how a drug is absorbed, distributed, metabolised, and excreted — collectively
+  It describes how a drug is absorbed, distributed, metabolised, and excreted, collectively
   referred to as ADMET (Absorption, Distribution, Metabolism, Excretion, and Toxicity).
   Among the mathematical frameworks used in pharmacokinetic analysis, <b>compartmental
   modelling</b> has proven to be one of the most powerful and widely applied approaches.</p>
@@ -69,9 +69,9 @@ window.MathJax = {
   <div class="callout reveal">
     <h4>The two-compartment idea</h4>
     <p>The model divides the body into two interconnected regions: a <b>central
-    compartment</b> (the bloodstream and highly perfused organs — heart, liver, kidneys),
+    compartment</b> (the bloodstream and highly perfused organs like the heart, the liver, and the kidneys),
     where the drug is introduced and distributes rapidly; and a <b>peripheral compartment</b>
-    (tissues that receive the drug more slowly — muscle, fat, skin). Drug transfer between
+    (tissues that receive the drug more slowly like the muscle, fat, skin). Drug transfer between
     them, and elimination from the body, follows first-order kinetics, expressible as a
     system of ordinary differential equations.</p>
   </div>
@@ -80,21 +80,21 @@ window.MathJax = {
 <section style="background:var(--bone-2);"><div class="wrap">
   <span class="eyebrow reveal">Why it matters</span>
   <h2 class="reveal reveal-delay-1">Mathematics in service of medicine</h2>
-  <p class="reveal reveal-delay-2">The accurate prediction of drug concentration over time is not a theoretical exercise —
+  <p class="reveal reveal-delay-2">The accurate prediction of drug concentration over time is not a theoretical exercise,
   it has direct consequences for clinical decision-making:</p>
   <div class="grid grid-3" style="margin-top:1.5rem;">
     <div class="card reveal"><h4>Dosing intervals</h4>
       <p>If a drug clears the central compartment too quickly, it may fall below its
-      therapeutic threshold before the next dose — rendering treatment ineffective.</p></div>
+      therapeutic threshold before the next dose, rendering treatment ineffective.</p></div>
     <div class="card reveal reveal-delay-1"><h4>Toxicity prevention</h4>
       <p>If distribution to the peripheral compartment is slower than expected, blood
       concentrations can climb to toxic levels.</p></div>
     <div class="card reveal reveal-delay-2"><h4>Personalised medicine</h4>
-      <p>Patients differ in weight, organ function, and age — all affecting rate constants.
+      <p>Patients differ in weight, organ function, and age; all affecting rate constants.
       Accurate modelling enables dose individualisation.</p></div>
   </div>
   <p style="margin-top:1.5rem;" class="reveal">Previous studies have applied the two-compartment model to a
-  wide range of drugs and delivery routes — from intravenous levodopa for Parkinson's disease,
+  wide range of drugs and delivery routes: from intravenous levodopa for Parkinson's disease,
   to the antibiotic sisomicin in healthy volunteers, to the antihistamine mizolastine. In each
   case, the model characterised drug distribution and elimination with clinical precision.</p>
 </div></section>
@@ -109,7 +109,7 @@ window.MathJax = {
   <ol style="margin-top:1rem;" class="reveal">
     <li>To formulate and explain the system of ODEs governing drug concentration in both compartments.</li>
     <li>To derive the <b>analytical (exact) solution</b> using eigenvalue decomposition and matrix methods.</li>
-    <li>To implement and compare three numerical methods — the <b>Euler method</b>, the
+    <li>To implement and compare three numerical methods: the <b>Euler method</b>, the
         <b>fourth-order Runge–Kutta method</b>, and the <b>Adams–Bashforth–Moulton method</b>.</li>
     <li>To conduct a thorough <b>error analysis</b>, quantifying each method's deviation from the exact solution.</li>
     <li>To investigate model parameters through <b>sensitivity analysis</b>.</li>
@@ -118,12 +118,12 @@ window.MathJax = {
   <div class="callout reveal">
     <h4>How differential equations are used</h4>
     <p>The rate of change of drug concentration in each compartment depends on the current
-    concentrations in both. That coupling — rate of change expressed in terms of present
-    state — is exactly what a differential equation captures. Solving the system reveals the
+    concentrations in both. That coupling, rate of change expressed in terms of present
+    state, is exactly what a differential equation captures. Solving the system reveals the
     full concentration-time profile from a single injected dose.</p>
   </div>
   <div class="btn-row">
-    <a class="btn btn-primary" href="model.html">Next: The Model →</a>
+    <a class="btn btn-primary" href="model.html">Next: The Model ▶</a>
   </div>
 </div></section>
 

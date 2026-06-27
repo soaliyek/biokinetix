@@ -52,7 +52,7 @@ window.MathJax = {
 <section><div class="wrap">
   <span class="eyebrow reveal">Figure replication · Figure 1</span>
   <h2 class="reveal reveal-delay-1">Concentration profiles in both compartments</h2>
-  <p class="reveal reveal-delay-2">We rebuilt the model ourselves from the ground up and recreated the main figure from the paper. Each panel shows the blood level (navy) and tissue level (crimson) across ten hours, drawn for the exact answer and for each of the three methods. Our results match the published ones right down to four decimal places.</p>
+  <p class="reveal reveal-delay-2">The research was followed closely to replicate the experiment, culminating in reconstruction of the model and reproduction of the original results. Each panel shows the blood level (navy) and tissue level (crimson) across ten hours, drawn for the exact answer and for each of the three methods. Our results match the published ones right down to four decimal places.</p>
   <figure class="figure reveal">
     <img src="assets/fig1_profiles.png" alt="Drug concentration profiles for exact, Euler, RK4 and ABM methods">
     <figcaption><b>Figure 1.</b> Drug levels over time using (a) the exact answer, (b) the Euler method, (c) the fourth-order Runge–Kutta method, and (d) the Adams–Bashforth–Moulton method. The blood level climbs as the drug spreads in, then falls; the tissue level drops away steadily.</figcaption>
@@ -67,7 +67,7 @@ window.MathJax = {
 <section style="background:var(--bone-2);"><div class="wrap">
   <span class="eyebrow reveal">Figure replication · Figures 2 &amp; 3</span>
   <h2 class="reveal reveal-delay-1">Where each method goes wrong</h2>
-  <p class="reveal reveal-delay-2">When we plot the size of each method's error against time, the ranking jumps straight out. Euler has the biggest error, and it is worst in the early part where the levels are changing fast. Adams–Bashforth–Moulton sits in the middle. Runge–Kutta stays so close to the exact answer that its error is barely visible the whole way through.</p>
+  <p class="reveal reveal-delay-2">The size of each method's error, when plotted against time, the ranking jumps straight out. Euler has the biggest error, and it is worst in the early part where the levels are changing fast. Adams–Bashforth–Moulton sits in the middle. Runge–Kutta stays so close to the exact answer that its error is barely visible the whole way through.</p>
   <figure class="figure reveal">
     <img src="assets/fig2_error_central.png" alt="Error comparison central compartment">
     <figcaption><b>Figure 2.</b> Absolute error in the central compartment for all three methods.</figcaption>
@@ -114,7 +114,7 @@ window.MathJax = {
   </ul>
   <div class="callout reveal"><h4>Getting closer over time</h4>
     <p>All three methods became more accurate as time went on. Once the levels settled and stopped changing so fast, every method closed in on the exact answer.</p></div>
-  <div class="btn-row"><a class="btn btn-primary" href="analysis.html">Next: Mathematical Analysis →</a></div>
+  <div class="btn-row"><a class="btn btn-primary" href="analysis.html">Next: Mathematical Analysis ▶</a></div>
 </div></section>
 
 <footer><div class="wrap">
