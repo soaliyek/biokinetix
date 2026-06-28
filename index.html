@@ -99,6 +99,37 @@ window.MathJax = {
 </div></section>
 
 
+<!-- ADME JOURNEY VIDEO (enhanced from real footage) -->
+<section class="adme3d-section" id="adme"><div class="wrap">
+  <span class="eyebrow reveal">See it happen · A · D · M · E</span>
+  <h2 class="big-statement reveal reveal-delay-1">The journey of a drug<br><em>through the body.</em></h2>
+  <p class="lead reveal reveal-delay-2">Every medicine goes through four stages once you take it, known together as ADME: Absorption, Distribution, Metabolism, and Excretion. The video below follows a dose through a see-through body and shows how each stage links to the two-compartment model we built for this project. It plays on its own, but you can pause it or jump to any stage.</p>
+
+  <div class="adme-video-wrap reveal">
+    <video id="admeVideo" class="adme-video" playsinline muted loop autoplay
+           poster="assets/adme-poster.jpg" preload="metadata">
+      <source src="assets/adme-video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- controls -->
+  <div class="adme3d-controls reveal">
+    <button class="adme3d-btn" id="admeBack" aria-label="Back 5 seconds">‹ Back</button>
+    <button class="adme3d-btn adme3d-btn-play" id="admePlay" aria-label="Play or pause">❚❚ Pause</button>
+    <button class="adme3d-btn" id="admeFwd" aria-label="Forward 5 seconds">Fwd ›</button>
+  </div>
+
+  <div class="adme3d-steps" id="admeSteps">
+    <div class="adme3d-step" data-time="1"><b>A</b><span>Absorption</span></div>
+    <div class="adme3d-step" data-time="12"><b>D</b><span>Distribution</span></div>
+    <div class="adme3d-step" data-time="27"><b>M</b><span>Metabolism</span></div>
+    <div class="adme3d-step" data-time="38"><b>E</b><span>Excretion</span></div>
+  </div>
+
+  <p class="reveal" style="font-size:0.92rem;color:var(--slate);margin-top:1.5rem;max-width:78ch;">
+    How this links to our maths: our two-compartment model splits the body into the blood (the central compartment) and the tissues (the peripheral compartment). Absorption is the drug entering the blood. Distribution is the drug moving back and forth between the blood and the tissues, which is exactly what the transfer rates k12 and k21 describe in our equations. Metabolism and excretion are the liver and kidneys clearing the drug for good, which is what the elimination rate k10 stands for. So this whole video is really a picture of the same system our equations solve.
+  </p>
+</div></section>
 
 
 <!-- 3D ADME JOURNEY SIMULATION (auto-playing) -->
