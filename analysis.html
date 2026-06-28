@@ -55,14 +55,14 @@ window.MathJax = {
   <p class="reveal reveal-delay-2">To find out which speed value matters most, we changed each one in turn across a sensible range and watched what it did to the blood level. The ranges we used sit around the values from the paper and cover what other studies have reported as realistic.</p>
 
   <h3 class="reveal">Changing $k_{12}$, the speed into the tissues</h3>
-  <p class="reveal">We tried $k_{12}$ from 0.1 up to 1.0 per hour, with 0.5 as the starting point. The higher this value, the faster the drug rushes into the tissues. This makes the blood peak both smaller and sharper, because the more quickly the drug leaves the blood, the less of it is sitting there at any one time.</p>
+  <p class="reveal">We tried $k_{12}$ from 0.1 up to 1.0 per hour, with 0.5 as the starting point. The higher this value, the faster the drug rushes into the tissues. This makes the concentration of the drug in the blood peak both smaller and sharper, because the more quickly the drug leaves the blood, the less of it is sitting there at any one time.</p>
   <figure class="figure reveal">
     <img src="assets/fig5_sensitivity_k12.png" alt="Sensitivity analysis of k12">
     <figcaption><b>Figure 5.</b> The blood level for five different values of $k_{12}$. A faster move into the tissues flattens the peak.</figcaption>
   </figure>
 
   <h3 class="reveal">Changing $k_{10}$, the speed of leaving the body</h3>
-  <p class="reveal">We tried $k_{10}$ from 0.01 up to 0.40 per hour, with 0.05 as the starting point. This one turned out to have the biggest effect on how much drug the body sees overall. Raising it pulls the whole blood curve down and clears the drug out sooner, which is what you would expect in a patient whose liver and kidneys are working well.</p>
+  <p class="reveal">We tried $k_{10}$ from 0.01 up to 0.40 per hour, with 0.05 as the starting point. This one turned out to have the biggest effect on how much drug the body sees overall. Raising it pulls the whole curve of the concentration in the blood down and clears the drug out sooner, which is what you would expect in a patient whose liver and kidneys are working well.</p>
   <figure class="figure reveal">
     <img src="assets/fig6_sensitivity_k10.png" alt="Sensitivity analysis of k10">
     <figcaption><b>Figure 6.</b> The blood level for five different values of $k_{10}$. Clearing the drug faster lowers the curve and steepens its fall.</figcaption>
