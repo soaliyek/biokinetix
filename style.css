@@ -35,17 +35,37 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bone);
 .reveal-delay-2{transition-delay:0.24s}
 .reveal-delay-3{transition-delay:0.36s}
 
-.nav{position:sticky;top:0;z-index:100;background:rgba(251,250,247,0.86);
+.nav{
+  height: 70px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(251,250,247,0.86);
   backdrop-filter:blur(16px) saturate(150%);
   -webkit-backdrop-filter:blur(16px) saturate(150%);
   border-bottom:1px solid rgba(216,222,230,0.6);
   transition:padding 0.3s var(--ease-out),box-shadow 0.3s var(--ease-out)}
 .nav.scrolled{box-shadow:var(--shadow-sm)}
-.nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;
-  align-items:center;justify-content:space-between;padding:0.9rem 1.5rem}
-.brand{display:flex;align-items:center;gap:0.6rem;
-  font-family:var(--serif);font-weight:600;font-size:1.18rem;
-  color:var(--plasma);text-decoration:none;letter-spacing:-0.01em;
+.nav-inner{
+  height: 100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0.9rem 1.5rem
+}
+.brand{
+  height: 100%;
+  display:flex;
+  align-items:center;
+  gap:0.6rem;
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:1.18rem;
+  color:var(--plasma);
+  text-decoration:none;
+  letter-spacing:-0.01em;
   transition:transform 0.25s var(--ease-out)}
 .brand:hover{transform:translateY(-1px)}
 .brand-mark{width:32px;height:32px;flex-shrink:0}
@@ -53,6 +73,12 @@ body{font-family:var(--sans);color:var(--ink);background:var(--bone);
   animation:brandPulse 3s ease-in-out infinite}
 .brand-mark .pulse-p{transform-origin:27px 20px;
   animation:brandPulse 3s ease-in-out infinite 1.5s}
+
+.nav .nav-inner .brand img{
+  height: 100%;
+  width: 100%;
+}
+
 @keyframes brandPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
 .nav-links{display:flex;gap:0.2rem;flex-wrap:wrap;align-items:center}
 .nav-links a{font-size:0.82rem;font-weight:500;color:var(--slate);
